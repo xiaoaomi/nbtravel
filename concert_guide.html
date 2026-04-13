@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>2025 韩国演唱会日程指南 | NB Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter','Noto Sans SC',sans-serif;
+  background: #0a0a0a; color: #fff;
+  width: 900px;
+}
+.page { width: 900px; padding: 56px; }
+
+/* COVER */
+.cover {
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a0a2a 60%, #0d1a0a 100%);
+  padding: 64px 56px 48px;
+  border-bottom: 1px solid #1a1a1a;
+  margin-bottom: 0;
+}
+.cover-tag {
+  display: inline-block;
+  background: rgba(250,204,21,0.15);
+  border: 1px solid rgba(250,204,21,0.3);
+  color: #fbbf24; font-size: 11px; font-weight: 700;
+  padding: 5px 14px; border-radius: 3px;
+  letter-spacing: 2px; margin-bottom: 24px;
+}
+.cover-title { font-size: 44px; font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 12px; }
+.cover-title em { color: #fbbf24; font-style: normal; }
+.cover-sub { font-size: 16px; color: #555; font-weight: 300; margin-bottom: 40px; }
+.cover-stats {
+  display: flex; gap: 40px;
+  padding-top: 32px; border-top: 1px solid #1a1a1a;
+}
+.cstat-num { font-size: 28px; font-weight: 900; color: #fbbf24; }
+.cstat-label { font-size: 12px; color: #444; margin-top: 4px; }
+
+/* SECTION */
+.section { padding: 40px 56px; border-bottom: 1px solid #111; }
+.section:last-child { border-bottom: none; }
+.section-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: #444; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-tag::after { content: ''; flex: 1; height: 1px; background: #1a1a1a; }
+
+/* CONCERT CARD */
+.concert-grid { display: flex; flex-direction: column; gap: 2px; }
+.concert-card {
+  display: grid; grid-template-columns: 80px 1fr auto;
+  gap: 20px; align-items: center;
+  background: #111; padding: 18px 24px;
+  border-left: 3px solid transparent;
+  transition: all .2s;
+}
+.concert-card.tier1 { border-left-color: #fbbf24; }
+.concert-card.tier2 { border-left-color: #60a5fa; }
+.concert-card.tier3 { border-left-color: #34d399; }
+.concert-card.tier4 { border-left-color: #f472b6; }
+.concert-card.tier5 { border-left-color: #a78bfa; }
+.concert-card.festival { border-left-color: #fb923c; }
+
+.concert-date {
+  text-align: center;
+}
+.date-month { font-size: 10px; font-weight: 700; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+.date-day { font-size: 28px; font-weight: 900; color: #fff; line-height: 1; }
+.date-year { font-size: 10px; color: #333; margin-top: 2px; }
+
+.concert-info {}
+.concert-artist { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.concert-name { font-size: 12px; color: #555; margin-bottom: 5px; font-style: italic; }
+.concert-venue { font-size: 12px; color: #444; display: flex; gap: 6px; align-items: center; }
+.concert-venue::before { content: '📍'; font-size: 10px; }
+
+.concert-meta { text-align: right; }
+.concert-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 8px; border-radius: 2px;
+  margin-bottom: 6px;
+}
+.badge-hot { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.badge-kpop { background: rgba(96,165,250,0.15); color: #60a5fa; }
+.badge-festival { background: rgba(251,146,60,0.15); color: #fb923c; }
+.badge-intl { background: rgba(167,139,250,0.15); color: #a78bfa; }
+.badge-sold { background: rgba(248,113,113,0.15); color: #f87171; }
+.concert-duration { font-size: 11px; color: #333; }
+
+/* CATEGORY HEADER */
+.cat-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px 12px;
+  background: #0d0d0d;
+}
+.cat-emoji { font-size: 20px; }
+.cat-title { font-size: 14px; font-weight: 800; color: #fff; }
+.cat-desc { font-size: 11px; color: #444; margin-top: 2px; }
+
+/* NB SERVICE BOX */
+.service-box {
+  background: #111; border: 1px solid #1a1a1a;
+  padding: 28px 32px; margin: 0 56px;
+  margin-top: 0;
+}
+.service-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.service-sub { font-size: 13px; color: #555; margin-bottom: 20px; font-weight: 300; }
+.service-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.svc-item { }
+.svc-icon { font-size: 20px; margin-bottom: 8px; }
+.svc-name { font-size: 13px; font-weight: 700; color: #ccc; margin-bottom: 3px; }
+.svc-desc { font-size: 11px; color: #444; line-height: 1.6; }
+
+/* NOTE */
+.note-box {
+  background: rgba(251,191,36,0.05);
+  border: 1px solid rgba(251,191,36,0.15);
+  padding: 16px 20px;
+  margin: 16px 56px 0;
+  font-size: 12px; color: #777;
+  line-height: 1.7;
+}
+.note-box strong { color: #fbbf24; }
+
+/* FOOTER */
+.footer {
+  padding: 24px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid #111;
+}
+.footer-brand { font-size: 13px; color: #333; }
+.footer-brand strong { color: #555; }
+.footer-note { font-size: 11px; color: #222; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">🎤 NB Travel 演唱会接送 · 票务服务</div>
+  <div class="cover-title">2025 首尔 <em>K-POP</em><br>演唱会日程指南</div>
+  <div class="cover-sub">精选下半年重磅演唱会 · 含接送服务 · 票务协助</div>
+  <div class="cover-stats">
+    <div><div class="cstat-num">15+</div><div class="cstat-label">重磅演唱会</div></div>
+    <div><div class="cstat-num">7~12月</div><div class="cstat-label">覆盖时间段</div></div>
+    <div><div class="cstat-num">全包</div><div class="cstat-label">接送+票务+陪同</div></div>
+  </div>
+</div>
+
+<!-- ── 7月 ── -->
+<div class="section">
+  <div class="section-tag">2025年 7月 July</div>
+
+  <div class="cat-header">
+    <div class="cat-emoji">⭐</div>
+    <div>
+      <div class="cat-title">BLACKPINK 世界巡演 首尔站</div>
+      <div class="cat-desc">BLACKPINK WORLD TOUR &lt;DEADLINE&gt; — 3年回归，首尔率先开幕</div>
+    </div>
+  </div>
+  <div class="concert-grid">
+    <div class="concert-card tier1">
+      <div class="concert-date"><div class="date-month">JUL</div><div class="date-day">05</div><div class="date-year">SAT</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">BLACKPINK</div>
+        <div class="concert-name">World Tour &lt;DEADLINE&gt; Day 1</div>
+        <div class="concert-venue">고양종합운동장 주경기장（高阳综合体育场）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-hot">🔥 HOT</span><div class="concert-duration">8:00PM</div></div>
+    </div>
+    <div class="concert-card tier1">
+      <div class="concert-date"><div class="date-month">JUL</div><div class="date-day">06</div><div class="date-year">SUN</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">BLACKPINK</div>
+        <div class="concert-name">World Tour &lt;DEADLINE&gt; Day 2</div>
+        <div class="concert-venue">고양종합운동장 주경기장（高阳综合体育场）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-hot">🔥 HOT</span><div class="concert-duration">7:00PM</div></div>
+    </div>
+    <div class="concert-card tier1">
+      <div class="concert-date"><div class="date-month">JUL</div><div class="date-day">12</div><div class="date-year">SAT</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">BLACKPINK</div>
+        <div class="concert-name">World Tour &lt;DEADLINE&gt; Day 3</div>
+        <div class="concert-venue">고양종합운동장 주경기장（高阳综合体育场）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-hot">🔥 HOT</span><div class="concert-duration">8:00PM</div></div>
+    </div>
+    <div class="concert-card tier1">
+      <div class="concert-date"><div class="date-month">JUL</div><div class="date-day">13</div><div class="date-year">SUN</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">BLACKPINK</div>
+        <div class="concert-name">World Tour &lt;DEADLINE&gt; Day 4</div>
+        <div class="concert-venue">고양종합운동장 주경기장（高阳综合体育场）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-hot">🔥 HOT</span><div class="concert-duration">8:00PM</div></div>
+    </div>
+    <div class="concert-card tier2">
+      <div class="concert-date"><div class="date-month">JUL</div><div class="date-day">19</div><div class="date-year">SAT</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">TWICE</div>
+        <div class="concert-name">This Is For World Tour — 首尔站</div>
+        <div class="concert-venue">인스파이어 아레나（仁川Inspire Arena）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-kpop">K-POP</span><div class="concert-duration">360°环形舞台</div></div>
+    </div>
+    <div class="concert-card tier2">
+      <div class="concert-date"><div class="date-month">JUL</div><div class="date-day">20</div><div class="date-year">SUN</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">TWICE</div>
+        <div class="concert-name">This Is For World Tour — 首尔站 Day 2</div>
+        <div class="concert-venue">인스파이어 아레나（仁川Inspire Arena）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-kpop">K-POP</span><div class="concert-duration">360°环形舞台</div></div>
+    </div>
+    <div class="concert-card festival">
+      <div class="concert-date"><div class="date-month">JUL</div><div class="date-day">04~06</div><div class="date-year">FRI-SUN</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">WATERBOMB SEOUL 2025</div>
+        <div class="concert-name">워터밤 서울 — 夏日水枪音乐节</div>
+        <div class="concert-venue">서울 올림픽공원 일원（奥林匹克公园）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-festival">FESTIVAL</span><div class="concert-duration">3天</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 8月 ── -->
+<div class="section">
+  <div class="section-tag">2025年 8月 August</div>
+  <div class="concert-grid">
+    <div class="concert-card tier4">
+      <div class="concert-date"><div class="date-month">AUG</div><div class="date-day">29~31</div><div class="date-year">FRI-SUN</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">aespa</div>
+        <div class="concert-name">2025 aespa Live Tour — SYNK : aeXIS Line — 首尔站</div>
+        <div class="concert-venue">올림픽공원 KSPO돔（奥林匹克公园KSPO穹顶）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-kpop">K-POP</span><div class="concert-duration">3场连演</div></div>
+    </div>
+    <div class="concert-card festival">
+      <div class="concert-date"><div class="date-month">AUG</div><div class="date-day">TBD</div><div class="date-year">2025</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">서울 파크 뮤직 페스티벌</div>
+        <div class="concert-name">Seoul Park Music Festival 2025</div>
+        <div class="concert-venue">올림픽공원（奥林匹克公园）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-festival">FESTIVAL</span><div class="concert-duration">多日</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 하반기 TBD ── -->
+<div class="section">
+  <div class="section-tag">2025年 下半年 预计 · 待确认</div>
+  <div class="concert-grid">
+    <div class="concert-card tier5">
+      <div class="concert-date"><div class="date-month">2025</div><div class="date-day">下半</div><div class="date-year">待定</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">IU（아이유）</div>
+        <div class="concert-name">个人巡回演唱会（预计）</div>
+        <div class="concert-venue">首尔大型场馆（待官宣）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-hot">💛 期待</span></div>
+    </div>
+    <div class="concert-card tier3">
+      <div class="concert-date"><div class="date-month">2025</div><div class="date-day">下半</div><div class="date-year">待定</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">Stray Kids</div>
+        <div class="concert-name">MANIAC / dominATE 世界巡演 首尔场（预计）</div>
+        <div class="concert-venue">首尔大型场馆（待官宣）</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-kpop">K-POP</span></div>
+    </div>
+    <div class="concert-card tier2">
+      <div class="concert-date"><div class="date-month">2025</div><div class="date-day">下半</div><div class="date-year">待定</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">NewJeans（뉴진스）</div>
+        <div class="concert-name">复出演唱会（预计，成员重聚后）</div>
+        <div class="concert-venue">待官宣</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-hot">👀 关注中</span></div>
+    </div>
+    <div class="concert-card tier1">
+      <div class="concert-date"><div class="date-month">2025</div><div class="date-day">末~<br>2026</div><div class="date-year">待定</div></div>
+      <div class="concert-info">
+        <div class="concert-artist">BTS（방탄소년단）</div>
+        <div class="concert-name">完整体回归演唱会（7人全员退伍，回归预计2026初）</div>
+        <div class="concert-venue">待官宣</div>
+      </div>
+      <div class="concert-meta"><span class="concert-badge badge-hot">🔥 全球关注</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- NB TRAVEL 服务 -->
+<div class="service-box" style="margin: 0; padding: 32px 56px;">
+  <div class="service-title">🚗 NB Travel 演唱会一站式服务</div>
+  <div class="service-sub">演唱会当天，您只需要准备好心情 — 其他的交给我们</div>
+  <div class="service-grid">
+    <div class="svc-item">
+      <div class="svc-icon">🎫</div>
+      <div class="svc-name">票务协助</div>
+      <div class="svc-desc">协助通过Interpark/Melon等平台抢票，了解购票渠道与正版票识别</div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-icon">🚐</div>
+      <div class="svc-name">专车接送</div>
+      <div class="svc-desc">酒店→场馆往返专车，演唱会散场高峰期无需拥挤等出租车</div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-icon">🗺️</div>
+      <div class="svc-name">周边行程</div>
+      <div class="svc-desc">演唱会前后安排首尔观光、美食体验，最大化您的韩国之旅</div>
+    </div>
+  </div>
+</div>
+
+<div class="note-box">
+  <strong>⚠️ 重要说明：</strong>以上日程均来自公开信息整理，部分场次信息以官方最终公告为准。演唱会票务极为紧俏，建议提前2~3个月联系 NB Travel 确认行程。「待定」场次将持续跟踪更新。
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand"><strong>🇰🇷 NB Travel 奶爸韩游</strong> · 韩国医疗观光 &amp; 演唱会接送</div>
+  <div class="footer-note">数据来源：官方公告 / Korea Herald / Interpark · 整理日期：2025年</div>
+</div>
+
+</body>
+</html>

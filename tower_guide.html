@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>导游参考卡 · 东方明珠 vs 乐天世界塔</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter','Noto Sans SC',sans-serif;
+  background: #0d0d0d;
+  color: #fff;
+  width: 900px;
+}
+.card {
+  width: 900px;
+  background: #0d0d0d;
+  padding: 56px 56px 48px;
+}
+
+/* HEADER */
+.header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 44px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #222;
+}
+.header-left {}
+.tag {
+  display: inline-block;
+  background: #1a56db; color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 3px;
+  letter-spacing: 2px; margin-bottom: 14px;
+}
+.title {
+  font-size: 32px; font-weight: 900;
+  line-height: 1.15; letter-spacing: -0.8px;
+}
+.title em { color: #f59e0b; font-style: normal; }
+.subtitle { font-size: 14px; color: #666; margin-top: 8px; font-weight: 400; }
+.header-badge {
+  text-align: right;
+  font-size: 11px; color: #444;
+  line-height: 1.8;
+}
+.header-badge strong { color: #888; display: block; font-size: 13px; }
+
+/* TWO COL */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  margin-bottom: 28px;
+}
+
+/* TOWER CARD */
+.tower {
+  border-radius: 2px; overflow: hidden;
+}
+.tower-header {
+  padding: 22px 24px 18px;
+}
+.tower.shanghai .tower-header { background: #1a0a00; border-top: 3px solid #f59e0b; }
+.tower.seoul .tower-header { background: #00081a; border-top: 3px solid #3b82f6; }
+
+.tower-city {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.tower.shanghai .tower-city { color: #f59e0b; }
+.tower.seoul .tower-city { color: #3b82f6; }
+
+.tower-name { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+.tower-name-sub { font-size: 13px; color: #555; font-weight: 400; }
+
+.tower-height {
+  display: flex; align-items: baseline; gap: 4px; margin-top: 16px;
+}
+.height-num {
+  font-size: 52px; font-weight: 900; letter-spacing: -2px; line-height: 1;
+}
+.tower.shanghai .height-num { color: #f59e0b; }
+.tower.seoul .height-num { color: #3b82f6; }
+.height-unit { font-size: 18px; color: #444; }
+
+.tower-body { padding: 20px 24px; background: #111; }
+.spec-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 13px;
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-label { color: #555; font-weight: 400; }
+.spec-value { color: #ccc; font-weight: 600; text-align: right; }
+.spec-value.highlight { color: #fff; font-weight: 800; }
+
+/* VISUAL HEIGHT BAR */
+.height-compare {
+  background: #111;
+  border-radius: 2px; padding: 28px 24px;
+  margin-bottom: 28px;
+}
+.hc-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #444; text-transform: uppercase; margin-bottom: 20px; }
+.hc-bars { display: flex; align-items: flex-end; gap: 40px; height: 120px; }
+.hc-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.hc-bar {
+  width: 48px; border-radius: 2px 2px 0 0;
+  position: relative;
+}
+.hc-bar.shanghai { background: linear-gradient(180deg, #f59e0b, #92400e); height: 101px; }
+.hc-bar.seoul { background: linear-gradient(180deg, #3b82f6, #1e3a8a); height: 120px; }
+.hc-bar-label-top {
+  font-size: 13px; font-weight: 800; text-align: center;
+}
+.hc-bar.shanghai + .hc-bar-label-top,
+.hc-bar-label-top.sh { color: #f59e0b; }
+.hc-bar-label-top.sk { color: #3b82f6; }
+.hc-bar-name { font-size: 11px; color: #555; text-align: center; }
+
+.hc-diff {
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px;
+}
+.hc-arrow { font-size: 28px; }
+.hc-diff-text { font-size: 12px; color: #444; text-align: center; line-height: 1.6; }
+.hc-diff-num { font-size: 20px; font-weight: 900; color: #fff; }
+
+/* COMPARE TABLE */
+.compare-section {
+  background: #111; border-radius: 2px;
+  margin-bottom: 28px; overflow: hidden;
+}
+.compare-row {
+  display: grid; grid-template-columns: 1fr 1.2fr 1.2fr;
+  border-bottom: 1px solid #1a1a1a;
+}
+.compare-row:last-child { border-bottom: none; }
+.compare-row.header-row {
+  background: #161616;
+}
+.compare-cell {
+  padding: 12px 20px;
+  font-size: 13px;
+}
+.compare-row.header-row .compare-cell {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  color: #444; text-transform: uppercase;
+}
+.compare-cell:nth-child(2) { color: #f59e0b; font-weight: 600; border-left: 1px solid #1a1a1a; }
+.compare-cell:nth-child(3) { color: #3b82f6; font-weight: 600; border-left: 1px solid #1a1a1a; }
+.compare-cell:first-child { color: #555; }
+.winner {
+  background: rgba(59,130,246,0.08);
+}
+.winner .compare-cell:nth-child(3) { color: #60a5fa; font-weight: 800; }
+
+/* QUOTE */
+.quote-box {
+  background: #111;
+  border-left: 3px solid #f59e0b;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+.quote-text {
+  font-size: 15px; line-height: 1.8; color: #bbb;
+  font-style: italic; font-weight: 300;
+}
+.quote-text strong { color: #fff; font-style: normal; font-weight: 700; }
+.quote-tag { font-size: 11px; color: #444; margin-top: 10px; letter-spacing: 1px; }
+
+/* TIPS */
+.tips {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 28px;
+}
+.tip {
+  background: #111; padding: 16px 20px;
+  border-radius: 2px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.tip-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.tip-desc { font-size: 12px; color: #555; line-height: 1.6; }
+
+/* FOOTER */
+.footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 20px; border-top: 1px solid #1a1a1a;
+}
+.footer-brand { font-size: 12px; color: #333; }
+.footer-brand strong { color: #555; }
+.footer-note { font-size: 11px; color: #2a2a2a; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="tag">🗼 导游参考资料</div>
+      <div class="title">东方明珠 <em>vs</em> 乐天世界塔</div>
+      <div class="subtitle">上海 · 1994 &nbsp;vs&nbsp; 首尔 · 2017 — 两座城市的天际线符号</div>
+    </div>
+    <div class="header-badge">
+      <strong>NB Travel 导游素材</strong>
+      Korea Medical Tourism
+    </div>
+  </div>
+
+  <!-- TWO TOWER CARDS -->
+  <div class="two-col">
+    <!-- Shanghai -->
+    <div class="tower shanghai">
+      <div class="tower-header">
+        <div class="tower-city">📍 Shanghai, China</div>
+        <div class="tower-name">东方明珠广播电视塔</div>
+        <div class="tower-name-sub">Oriental Pearl Tower</div>
+        <div class="tower-height">
+          <div class="height-num">468</div>
+          <div class="height-unit">m</div>
+        </div>
+      </div>
+      <div class="tower-body">
+        <div class="spec-row">
+          <span class="spec-label">建成年份</span>
+          <span class="spec-value">1994年</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">建筑特色</span>
+          <span class="spec-value">11个球体串联</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">主观光层</span>
+          <span class="spec-value highlight">263米（上球体）</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">最高观光点</span>
+          <span class="spec-value">351米（太空舱）</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">底层观光廊</span>
+          <span class="spec-value">90米</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">周边地标</span>
+          <span class="spec-value">外滩 · 陆家嘴 · 黄浦江</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">设计灵感</span>
+          <span class="spec-value">大珠小珠落玉盘</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seoul -->
+    <div class="tower seoul">
+      <div class="tower-header">
+        <div class="tower-city">📍 Seoul, Korea · 잠실</div>
+        <div class="tower-name">롯데월드타워</div>
+        <div class="tower-name-sub">Lotte World Tower · SEOUL SKY</div>
+        <div class="tower-height">
+          <div class="height-num">555</div>
+          <div class="height-unit">m</div>
+        </div>
+      </div>
+      <div class="tower-body">
+        <div class="spec-row">
+          <span class="spec-label">建成年份</span>
+          <span class="spec-value">2017年</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">楼层数</span>
+          <span class="spec-value highlight">地上123层</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">观光层 SEOUL SKY</span>
+          <span class="spec-value highlight">117~123层 ≈500米</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">全球排名</span>
+          <span class="spec-value">世界第6高楼</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">电梯速度</span>
+          <span class="spec-value">600m/分钟（超高速）</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">周边地标</span>
+          <span class="spec-value">汉江 · 乐天世界 · 石村湖</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">设计灵感</span>
+          <span class="spec-value">韩国瓷器 · 书法笔锋</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEIGHT VISUAL + COMPARE -->
+  <div class="two-col">
+    <!-- Height bar -->
+    <div class="height-compare" style="margin-bottom:0;">
+      <div class="hc-title">高度直观对比</div>
+      <div class="hc-bars">
+        <div class="hc-bar-wrap">
+          <div class="hc-bar-label-top sh">468m</div>
+          <div class="hc-bar shanghai"></div>
+          <div class="hc-bar-name">东方明珠<br>上海</div>
+        </div>
+        <div class="hc-diff">
+          <div class="hc-diff-num">+87m</div>
+          <div class="hc-diff-text">乐天世界塔<br>高出东方明珠</div>
+        </div>
+        <div class="hc-bar-wrap">
+          <div class="hc-bar-label-top sk">555m</div>
+          <div class="hc-bar seoul"></div>
+          <div class="hc-bar-name">乐天世界塔<br>首尔</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key tips -->
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="tip">
+        <div class="tip-icon">🎫</div>
+        <div>
+          <div class="tip-title">SEOUL SKY 票价参考</div>
+          <div class="tip-desc">成人约₩27,000~29,000，含观景台全层游览，建议提前网上购票，节假日需排队1~2小时</div>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">🌅</div>
+        <div>
+          <div class="tip-title">最佳观赏时间</div>
+          <div class="tip-desc">日落前1小时入场最佳，可同时欣赏白天首尔全景和入夜后汉江灯光秀，两种风景一次打卡</div>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">📸</div>
+        <div>
+          <div class="tip-title">拍照要点</div>
+          <div class="tip-desc">石村湖畔仰拍全塔最震撼；塔内117层玻璃地板是打卡热点，需排队约20分钟</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARE TABLE -->
+  <div class="compare-section" style="margin-top:28px;">
+    <div class="compare-row header-row">
+      <div class="compare-cell">对比维度</div>
+      <div class="compare-cell">东方明珠 · 上海</div>
+      <div class="compare-cell">乐天世界塔 · 首尔</div>
+    </div>
+    <div class="compare-row winner">
+      <div class="compare-cell">总高度</div>
+      <div class="compare-cell">468米</div>
+      <div class="compare-cell">🏆 555米（+87m）</div>
+    </div>
+    <div class="compare-row winner">
+      <div class="compare-cell">最高观光点</div>
+      <div class="compare-cell">351米</div>
+      <div class="compare-cell">🏆 约500米</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">建筑风格</div>
+      <div class="compare-cell">球体串联，科幻感</div>
+      <div class="compare-cell">锥形流线，传统美学</div>
+    </div>
+    <div class="compare-row winner">
+      <div class="compare-cell">建成年份</div>
+      <div class="compare-cell">1994年（历史感）</div>
+      <div class="compare-cell">🏆 2017年（更现代）</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">夜景特色</div>
+      <div class="compare-cell">彩色球体灯光秀</div>
+      <div class="compare-cell">汉江 + 首尔全城灯海</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">周边体验</div>
+      <div class="compare-cell">外滩 · 浦东 · 黄浦江</div>
+      <div class="compare-cell">乐天世界乐园 · 石村湖</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">设计文化</div>
+      <div class="compare-cell">中国古典诗意</div>
+      <div class="compare-cell">韩国传统工艺美学</div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-box">
+    <div class="quote-text">
+      「东方明珠见证了<strong>上海浦东从农田变成国际金融中心</strong>的30年奇迹；乐天世界塔则代表了<strong>首尔作为亚洲设计之都</strong>的现代雄心。两座城市、两种美学、同样令人震撼。」
+    </div>
+    <div class="quote-tag">— NB Travel 导游推荐金句</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand"><strong>🇰🇷 NB Travel 奶爸韩游</strong> · 导游内部参考资料</div>
+    <div class="footer-note">数据来源：官方资料 · 仅供导览参考使用</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奶爸韩游 NB Travel | 韩国私人定制管家</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; background:#f5f6f8; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background:#fff;
+  height:56px;
+  display:flex;
+  align-items:center;
+  padding:0 32px;
+  position:sticky;
+  top:0; z-index:100;
+  box-shadow:0 1px 6px rgba(0,0,0,.08);
+  gap:24px;
+}
+.navbar-brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.brand-logo {
+  width:36px; height:36px;
+  background:linear-gradient(135deg,#0063CC,#0086F6);
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; font-weight:900; color:#fff;
+}
+.brand-text .cn { font-size:15px; font-weight:700; color:#0086F6; }
+.brand-text .en { font-size:11px; color:#999; letter-spacing:1px; }
+.navbar-nav { display:flex; gap:20px; list-style:none; }
+.navbar-nav a { font-size:14px; color:#555; text-decoration:none; transition:color .2s; }
+.navbar-nav a:hover { color:#0086F6; }
+.navbar-right { margin-left:auto; display:flex; align-items:center; gap:12px; }
+.btn-consult {
+  background:linear-gradient(90deg,#FF6B35,#FF4D4F);
+  color:#fff; border:none;
+  padding:8px 20px; border-radius:20px;
+  font-size:13px; font-weight:700;
+  cursor:pointer; text-decoration:none;
+  white-space:nowrap;
+}
+.btn-consult:hover { opacity:.9; }
+
+/* ===== HERO ===== */
+.hero {
+  background:linear-gradient(160deg,rgba(0,30,80,.82) 0%,rgba(0,60,140,.70) 60%,rgba(0,100,180,.60) 100%),
+    url('https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?w=1600&q=80') center/cover no-repeat;
+  padding:80px 32px 48px;
+  min-height:480px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  padding:5px 14px; border-radius:20px;
+  font-size:12px; color:rgba(255,255,255,.85);
+  margin-bottom:16px;
+  letter-spacing:1px;
+}
+.hero h1 {
+  font-size:52px; font-weight:900;
+  color:#fff; line-height:1.15;
+  margin-bottom:12px;
+  text-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.hero h1 em { color:#FFD666; font-style:normal; }
+.hero-sub {
+  font-size:17px; color:rgba(255,255,255,.75);
+  font-weight:300; line-height:1.8;
+  margin-bottom:28px;
+}
+/* 搜索框 */
+.hero-search {
+  background:#fff;
+  border-radius:12px;
+  padding:16px 20px;
+  max-width:720px; width:100%;
+  display:flex; align-items:center; gap:12px;
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+  margin-bottom:20px;
+}
+.search-divider { width:1px; height:28px; background:#eee; flex-shrink:0; }
+.search-item {
+  flex:1; display:flex; flex-direction:column; gap:2px;
+  cursor:pointer; padding:0 8px;
+}
+.search-item-label { font-size:11px; color:#999; }
+.search-item-val { font-size:14px; font-weight:600; color:#333; }
+.btn-search {
+  background:linear-gradient(90deg,#FF6B35,#FF4D4F);
+  color:#fff; border:none;
+  padding:12px 28px; border-radius:8px;
+  font-size:15px; font-weight:700;
+  cursor:pointer; white-space:nowrap;
+  flex-shrink:0;
+}
+/* 四大业务入口卡片 */
+.hero-services {
+  width:100%; max-width:800px;
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:12px; margin-bottom:20px;
+}
+.hero-svc-card {
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(8px);
+  border-radius:12px;
+  padding:16px 20px;
+  display:flex; align-items:center; gap:14px;
+  text-decoration:none;
+  transition:background .2s, transform .15s;
+  cursor:pointer;
+}
+.hero-svc-card:hover {
+  background:rgba(255,255,255,.22);
+  transform:translateY(-2px);
+}
+.hero-svc-icon { font-size:28px; flex-shrink:0; }
+.hero-svc-info { flex:1; }
+.hero-svc-title { font-size:15px; font-weight:700; color:#fff; margin-bottom:4px; }
+.hero-svc-tags { font-size:11px; color:rgba(255,255,255,.65); line-height:1.5; }
+.hero-svc-arrow { font-size:20px; color:rgba(255,255,255,.5); flex-shrink:0; }
+
+.hero-trust {
+  display:flex; gap:20px; flex-wrap:wrap; justify-content:center;
+}
+.hero-trust-item {
+  display:flex; align-items:center; gap:5px;
+  font-size:12px; color:rgba(255,255,255,.7);
+}
+.hero-trust-item .icon { font-size:14px; }
+
+/* ===== 热门路线快入口 ===== */
+.quick-entry {
+  background:#fff;
+  padding:20px 32px;
+  display:flex; gap:0;
+  border-bottom:1px solid #f0f0f0;
+  overflow-x:auto;
+}
+.quick-item {
+  flex:1; min-width:120px;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  padding:12px 16px;
+  cursor:pointer; text-decoration:none;
+  border-right:1px solid #f5f5f5;
+  transition:background .2s;
+  border-radius:8px;
+}
+.quick-item:hover { background:#f0f8ff; }
+.quick-item:last-child { border-right:none; }
+.quick-icon {
+  width:44px; height:44px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px;
+}
+.qi-blue { background:#EAF3FF; }
+.qi-green { background:#E8F7EC; }
+.qi-orange { background:#FFF4E6; }
+.qi-purple { background:#F3EEFF; }
+.qi-pink { background:#FFF0F0; }
+.quick-label { font-size:13px; font-weight:600; color:#333; }
+.quick-sub { font-size:11px; color:#999; }
+
+/* ===== 主容器 ===== */
+.main-container {
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px 16px 48px;
+}
+
+/* ===== 板块标题 ===== */
+.section-head {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:16px;
+}
+.section-head h2 { font-size:18px; font-weight:700; color:#1a1a1a; }
+.section-head h2 span { color:#0086F6; }
+.section-more {
+  font-size:13px; color:#0086F6; text-decoration:none;
+  display:flex; align-items:center; gap:3px;
+}
+.section-more:hover { text-decoration:underline; }
+
+/* ===== 服务卡片 ===== */
+.services-row {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:32px;
+}
+.service-card {
+  background:#fff; border-radius:12px;
+  overflow:hidden; text-decoration:none;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);
+  transition:box-shadow .2s, transform .2s;
+  display:block;
+}
+.service-card:hover { box-shadow:0 6px 24px rgba(0,0,0,.12); transform:translateY(-3px); }
+.service-cover {
+  height:140px; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  font-size:52px;
+}
+.cover-medical { background:linear-gradient(135deg,#667eea,#764ba2); }
+.cover-tour    { background:linear-gradient(135deg,#0086F6,#00C3FF); }
+.cover-kpop    { background:linear-gradient(135deg,#FF6B9D,#FF4E7E); }
+.service-cover-img {
+  width:100%; height:100%; object-fit:cover;
+  position:absolute; top:0; left:0;
+  filter:brightness(.75);
+}
+.service-cover-text {
+  position:relative; z-index:1;
+  text-align:center; color:#fff;
+}
+.service-cover-text .title { font-size:20px; font-weight:900; }
+.service-cover-text .en { font-size:11px; opacity:.8; letter-spacing:1px; margin-top:2px; }
+.service-body { padding:14px 16px 16px; }
+.service-desc { font-size:13px; color:#666; line-height:1.7; margin-bottom:10px; }
+.service-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.stag {
+  background:#f5f6f8; color:#555;
+  padding:3px 9px; border-radius:4px;
+  font-size:11px; font-weight:500;
+}
+.service-footer {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-top:12px; padding-top:10px;
+  border-top:1px solid #f5f5f5;
+}
+.service-price { font-size:13px; color:#FF4D4F; font-weight:700; }
+.service-link {
+  font-size:12px; color:#0086F6;
+  display:flex; align-items:center; gap:3px;
+}
+
+/* ===== 数据统计条 ===== */
+.stats-bar {
+  background:#fff; border-radius:12px;
+  padding:20px 32px;
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; margin-bottom:32px;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);
+}
+.stat-item {
+  text-align:center; padding:12px 16px;
+  border-right:1px solid #f0f0f0;
+}
+.stat-item:last-child { border-right:none; }
+.stat-num { font-size:32px; font-weight:900; color:#0086F6; line-height:1; }
+.stat-num .unit { font-size:16px; color:#FF4D4F; }
+.stat-label { font-size:12px; color:#999; margin-top:4px; }
+
+/* ===== 首尔一日游路线 (携程产品列表风格) ===== */
+.route-list { margin-bottom:32px; }
+.route-card {
+  background:#fff; border-radius:12px;
+  display:flex; overflow:hidden;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);
+  margin-bottom:12px;
+  text-decoration:none; color:inherit;
+  transition:box-shadow .2s;
+}
+.route-card:hover { box-shadow:0 4px 20px rgba(0,0,0,.12); }
+.route-img {
+  width:200px; height:140px; object-fit:cover;
+  flex-shrink:0;
+}
+.route-body { padding:14px 16px; flex:1; }
+.route-tags { display:flex; gap:6px; margin-bottom:7px; flex-wrap:wrap; }
+.rtag {
+  padding:2px 8px; border-radius:3px;
+  font-size:11px; font-weight:600;
+}
+.rtag-hot { background:#FFF0F0; color:#FF4D4F; }
+.rtag-blue { background:#EAF3FF; color:#0086F6; }
+.rtag-green { background:#E8F7EC; color:#1AAD19; }
+.route-title { font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:5px; }
+.route-desc { font-size:12px; color:#888; line-height:1.6; margin-bottom:10px;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.route-meta { display:flex; gap:14px; align-items:center; }
+.route-meta-item { font-size:12px; color:#999; display:flex; align-items:center; gap:3px; }
+.route-right {
+  width:160px; flex-shrink:0;
+  padding:14px 16px;
+  display:flex; flex-direction:column;
+  align-items:flex-end; justify-content:space-between;
+  border-left:1px solid #f5f5f5;
+}
+.route-rating { display:flex; align-items:center; gap:4px; font-size:12px; }
+.route-score { color:#FF9500; font-weight:700; font-size:16px; }
+.route-stars { color:#FF9500; font-size:11px; }
+.route-sold { font-size:11px; color:#FF4D4F; margin-top:2px; }
+.route-price-area { text-align:right; }
+.route-from { font-size:11px; color:#999; }
+.route-price { font-size:24px; font-weight:900; color:#FF4D4F; }
+.route-price .cur { font-size:14px; }
+.route-price .unit { font-size:12px; font-weight:400; color:#999; }
+.btn-book-route {
+  background:linear-gradient(90deg,#FF6B35,#FF4D4F);
+  color:#fff; border:none;
+  padding:8px 16px; border-radius:6px;
+  font-size:13px; font-weight:700;
+  cursor:pointer; width:100%;
+  text-align:center; text-decoration:none;
+  display:block;
+}
+
+/* ===== 服务流程 ===== */
+.process-card {
+  background:#fff; border-radius:12px;
+  padding:24px 28px; margin-bottom:32px;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);
+}
+.process-steps {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:0; position:relative;
+}
+.process-steps::before {
+  content:''; position:absolute;
+  top:24px; left:10%; right:10%; height:1px;
+  background:linear-gradient(90deg,#0086F6,#00C3FF);
+  z-index:0;
+}
+.process-step {
+  text-align:center; padding:0 8px;
+  position:relative; z-index:1;
+}
+.step-icon {
+  width:48px; height:48px; border-radius:50%;
+  background:#EAF3FF; border:2px solid #0086F6;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; margin:0 auto 10px;
+  background:#fff;
+}
+.step-num-badge {
+  position:absolute; top:-4px; right:calc(50% - 28px);
+  width:18px; height:18px;
+  background:#0086F6; color:#fff;
+  border-radius:50%; font-size:10px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.process-step h4 { font-size:13px; font-weight:700; color:#333; margin-bottom:4px; }
+.process-step p { font-size:11px; color:#999; line-height:1.5; }
+
+/* ===== 客户评价 ===== */
+.reviews-row {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:14px; margin-bottom:32px;
+}
+.review-card {
+  background:#fff; border-radius:12px;
+  padding:16px; box-shadow:0 1px 6px rgba(0,0,0,.06);
+}
+.review-stars { color:#FF9500; font-size:13px; margin-bottom:8px; }
+.review-text {
+  font-size:13px; color:#555; line-height:1.8;
+  margin-bottom:12px; font-style:italic;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+}
+.review-author { display:flex; align-items:center; gap:10px; }
+.review-avatar {
+  width:36px; height:36px; border-radius:50%;
+  background:linear-gradient(135deg,#0086F6,#00C3FF);
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; font-weight:700; color:#fff; flex-shrink:0;
+}
+.review-name { font-size:13px; font-weight:700; color:#333; }
+.review-from { font-size:11px; color:#999; }
+
+/* ===== 信任资质 ===== */
+.trust-card {
+  background:linear-gradient(135deg,#0063CC,#0086F6);
+  border-radius:12px; padding:24px 28px;
+  margin-bottom:32px;
+  display:flex; align-items:center;
+  gap:32px; flex-wrap:wrap;
+}
+.trust-item {
+  display:flex; align-items:center; gap:10px;
+  flex:1; min-width:160px;
+}
+.trust-icon {
+  width:40px; height:40px; border-radius:50%;
+  background:rgba(255,255,255,.15);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0;
+}
+.trust-text .title { font-size:13px; font-weight:700; color:#fff; }
+.trust-text .sub { font-size:11px; color:rgba(255,255,255,.65); margin-top:2px; }
+
+/* ===== 底部CTA ===== */
+.bottom-cta {
+  background:#fff; border-radius:12px;
+  padding:28px 32px;
+  display:flex; align-items:center;
+  justify-content:space-between; gap:24px;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);
+  margin-bottom:0;
+}
+.bottom-cta-text h2 { font-size:20px; font-weight:700; color:#1a1a1a; margin-bottom:6px; }
+.bottom-cta-text p { font-size:13px; color:#999; }
+.bottom-cta-btns { display:flex; gap:12px; flex-shrink:0; }
+.btn-cta-primary {
+  background:linear-gradient(90deg,#FF6B35,#FF4D4F);
+  color:#fff; padding:12px 24px;
+  border-radius:8px; font-size:14px; font-weight:700;
+  text-decoration:none;
+}
+.btn-cta-outline {
+  border:1.5px solid #0086F6; color:#0086F6;
+  padding:12px 24px; border-radius:8px;
+  font-size:14px; font-weight:600;
+  text-decoration:none; background:#fff;
+}
+.btn-cta-outline:hover { background:#EAF3FF; }
+
+/* ===== FOOTER ===== */
+footer {
+  background:#2b2f38;
+  padding:32px;
+  margin-top:24px;
+}
+.footer-top {
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:32px; margin-bottom:24px;
+}
+.footer-brand .name { font-size:18px; font-weight:700; color:#fff; }
+.footer-brand .sub { font-size:11px; color:rgba(255,255,255,.4); margin-top:2px; }
+.footer-brand .desc { font-size:12px; color:rgba(255,255,255,.45); line-height:1.8; margin-top:12px; }
+.footer-col h4 { font-size:12px; font-weight:700; color:#fff; letter-spacing:1px; margin-bottom:14px; text-transform:uppercase; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.footer-col ul a { font-size:12px; color:rgba(255,255,255,.45); text-decoration:none; }
+.footer-col ul a:hover { color:rgba(255,255,255,.8); }
+.footer-bottom {
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:20px;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:11px; color:rgba(255,255,255,.3);
+  flex-wrap:wrap; gap:10px;
+}
+.cert-tag {
+  display:inline-block; background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  padding:2px 10px; border-radius:3px;
+  font-size:10px; color:rgba(255,255,255,.4);
+  margin-left:6px;
+}
+
+/* ===== 浮动按钮 ===== */
+.float-btns {
+  position:fixed; right:20px; bottom:32px;
+  display:flex; flex-direction:column; gap:10px;
+  z-index:200;
+}
+.float-btn {
+  width:48px; height:48px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; text-decoration:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+  transition:transform .2s;
+  position:relative;
+}
+.float-btn:hover { transform:scale(1.1); }
+.fb-wechat { background:#07C160; }
+.fb-wa { background:#25D366; }
+.fb-top { background:#0086F6; color:#fff; font-size:16px; font-weight:700; }
+.float-tooltip {
+  position:absolute; right:56px;
+  background:#333; color:#fff;
+  padding:4px 10px; border-radius:4px;
+  font-size:11px; white-space:nowrap;
+  opacity:0; pointer-events:none; transition:opacity .2s;
+}
+.float-btn:hover .float-tooltip { opacity:1; }
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .navbar { padding:0 14px; }
+  .navbar-nav { display:none; }
+  .hero { padding:64px 16px 36px; }
+  .hero h1 { font-size:28px; }
+  .hero-search { flex-direction:column; padding:12px; gap:8px; }
+  .search-divider { display:none; }
+  .search-item { padding:6px 0; border-bottom:1px solid #f0f0f0; }
+  .search-item:last-of-type { border-bottom:none; }
+  .btn-search { width:100%; padding:10px; }
+  .quick-entry { padding:12px 8px; }
+  .quick-item { min-width:80px; padding:8px 6px; }
+  .quick-icon { width:36px; height:36px; font-size:18px; }
+  .quick-label { font-size:12px; }
+  .quick-sub { display:none; }
+  .services-row { grid-template-columns:repeat(2,1fr); }
+  .service-cover { height:120px; }
+  .stats-bar { grid-template-columns:repeat(2,1fr); padding:16px; }
+  .stat-item { border-bottom:1px solid #f0f0f0; }
+  .stat-item:nth-child(3),.stat-item:nth-child(4) { border-bottom:none; }
+  .stat-item:nth-child(odd) { border-right:1px solid #f0f0f0; }
+  .stat-item:nth-child(even) { border-right:none; }
+  .route-card { flex-direction:column; }
+  .route-img { width:100%; height:180px; }
+  .route-right { width:100%; border-left:none; border-top:1px solid #f5f5f5; flex-direction:row; align-items:center; }
+  .process-steps { grid-template-columns:1fr; }
+  .process-steps::before { display:none; }
+  .process-step { display:flex; align-items:center; gap:12px; text-align:left; padding:12px 0; border-bottom:1px solid #f5f5f5; }
+  .step-icon { margin:0; flex-shrink:0; }
+  .reviews-row { grid-template-columns:1fr; }
+  .trust-card { flex-direction:column; gap:16px; }
+  .bottom-cta { flex-direction:column; text-align:center; }
+  .bottom-cta-btns { flex-direction:column; width:100%; }
+  .btn-cta-primary,.btn-cta-outline { text-align:center; }
+  .footer-top { grid-template-columns:1fr; gap:20px; }
+  .footer-bottom { flex-direction:column; text-align:center; }
+  .float-btns { right:12px; bottom:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <div class="brand-logo">奶</div>
+    <div class="brand-text">
+      <div class="cn">奶爸韩游</div>
+      <div class="en">NB Travel Korea</div>
+    </div>
+  </a>
+  <ul class="navbar-nav">
+    <li><a href="medical.html">医疗观光</a></li>
+    <li><a href="tour.html">定制包车</a></li>
+    <li><a href="seoul-tour.html">首尔一日游</a></li>
+    <li><a href="concerts.html">演唱会票务</a></li>
+    <li><a href="#reviews">客户评价</a></li>
+  </ul>
+  <div class="navbar-right">
+    <a href="#contact" class="btn-consult">📞 立即咨询</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🇰🇷 韩国专业华语旅游管家 · 正规旅行社登记</div>
+  <h1>您的韩国 <em>私人定制</em> 管家<br>医疗·包车·追星 一站搞定</h1>
+  <p class="hero-sub">在韩深耕十年 · 中文全程陪同 · 1000+ 客户好评</p>
+
+
+
+  <div class="hero-trust">
+    <div class="hero-trust-item"><span class="icon">✅</span> 旅游业正规登录</div>
+    <div class="hero-trust-item"><span class="icon">🛡️</span> 安全有保障</div>
+    <div class="hero-trust-item"><span class="icon">💬</span> 中文全程服务</div>
+    <div class="hero-trust-item"><span class="icon">⚡</span> 即时确认</div>
+  </div>
+</section>
+
+<!-- 快速入口 -->
+<div class="quick-entry">
+  <a class="quick-item" href="medical.html">
+    <div class="quick-icon qi-purple">🏥</div>
+    <div class="quick-label">医疗观光</div>
+    <div class="quick-sub">整形/体检</div>
+  </a>
+  <a class="quick-item" href="tour.html">
+    <div class="quick-icon qi-blue">🚐</div>
+    <div class="quick-label">定制包车·接送机</div>
+    <div class="quick-sub">专属中文司导</div>
+  </a>
+  <a class="quick-item" href="seoul-tour.html">
+    <div class="quick-icon qi-orange">🗺️</div>
+    <div class="quick-label">首尔一日游</div>
+    <div class="quick-sub">A/B/C线路</div>
+  </a>
+  <a class="quick-item" href="concerts.html">
+    <div class="quick-icon qi-pink">🎤</div>
+    <div class="quick-label">演唱会·票务</div>
+    <div class="quick-sub">专车+代购</div>
+  </a>
+  <a class="quick-item" href="#contact">
+    <div class="quick-icon qi-green">📞</div>
+    <div class="quick-label">在线咨询</div>
+    <div class="quick-sub">24h响应</div>
+  </a>
+</div>
+
+<!-- 主内容 -->
+<div class="main-container">
+
+  <!-- 数据统计 -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">1000<span class="unit">+</span></div>
+      <div class="stat-label">累计服务客户</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.9<span class="unit">分</span></div>
+      <div class="stat-label">综合评分</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10<span class="unit">年</span></div>
+      <div class="stat-label">在韩深耕</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">98<span class="unit">%</span></div>
+      <div class="stat-label">客户好评率</div>
+    </div>
+  </div>
+
+  <!-- 服务项目 -->
+  <div class="section-head">
+    <h2>核心服务 <span>· 专业定制</span></h2>
+    <a href="#contact" class="section-more">全部服务 ›</a>
+  </div>
+  <div class="services-row">
+
+    <a class="service-card" href="medical.html">
+      <div class="service-cover cover-medical">
+        <div class="service-cover-text">
+          <div class="title">🏥 医疗观光</div>
+          <div class="en">Medical Tourism</div>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-tags">
+          <span class="stag">整形美容</span>
+          <span class="stag">皮肤管理</span>
+          <span class="stag">精密体检</span>
+          <span class="stag">眼科飞秒</span>
+          <span class="stag">牙科种植</span>
+        </div>
+        <div class="service-footer">
+          <span class="service-price">咨询报价</span>
+          <span class="service-link">查看详情 ›</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="service-card" href="tour.html">
+      <div class="service-cover cover-tour">
+        <div class="service-cover-text">
+          <div class="title">🚐 定制包车 · 接送机</div>
+          <div class="en">Private Car & Airport Transfer</div>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-tags">
+          <span class="stag">仁川接机</span>
+          <span class="stag">金浦接机</span>
+          <span class="stag">定制包车</span>
+          <span class="stag">中文司导</span>
+        </div>
+        <div class="service-footer">
+          <span class="service-price">咨询报价</span>
+          <span class="service-link">查看详情 ›</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="service-card" href="seoul-tour.html">
+      <div class="service-cover cover-seoul" style="background:linear-gradient(135deg,#0086F6,#00C3FF)">
+        <div class="service-cover-text">
+          <div class="title">🗺️ 首尔一日游</div>
+          <div class="en">Seoul Day Tour</div>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-tags">
+          <span class="stag">A线 古韵首尔</span>
+          <span class="stag">B线 摩登首尔</span>
+          <span class="stag">C线 近郊小镇</span>
+        </div>
+        <div class="service-footer">
+          <span class="service-price">₩388起/人</span>
+          <span class="service-link">查看线路 ›</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="service-card" href="concerts.html">
+      <div class="service-cover cover-kpop">
+        <div class="service-cover-text">
+          <div class="title">🎤 演唱会接送 · 票务</div>
+          <div class="en">K-POP Concert Service</div>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-tags">
+          <span class="stag">演唱会接送</span>
+          <span class="stag">门票代购</span>
+          <span class="stag">应援代购</span>
+        </div>
+        <div class="service-footer">
+          <span class="service-price">咨询报价</span>
+          <span class="service-link">敬请期待 ›</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+
+  <!-- 服务流程 -->
+  <div class="section-head">
+    <h2>服务流程 <span>· 透明简单</span></h2>
+  </div>
+  <div class="process-card">
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-icon">💬<div class="step-num-badge">1</div></div>
+        <h4>在线咨询</h4>
+        <p>微信/WhatsApp<br>提交需求</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">📋<div class="step-num-badge">2</div></div>
+        <h4>方案定制</h4>
+        <p>48小时内<br>出具方案</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">💳<div class="step-num-badge">3</div></div>
+        <h4>确认付款</h4>
+        <p>微信/支付宝<br>银联均可</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">✈️<div class="step-num-badge">4</div></div>
+        <h4>抵韩接待</h4>
+        <p>专车接机<br>全程陪同</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">🌟<div class="step-num-badge">5</div></div>
+        <h4>安心返程</h4>
+        <p>行程结束<br>送机服务</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 客户评价 -->
+  <div class="section-head" id="reviews">
+    <h2>客户评价 <span>· 真实好评</span></h2>
+    <a href="#" class="section-more">查看全部 ›</a>
+  </div>
+  <div class="reviews-row">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">「去年做双眼皮手术，全程有专业翻译陪同，医院对接也很顺畅。术后护理安排得很细致，不像第一次出国就医，完全不慌。」</p>
+      <div class="review-author">
+        <div class="review-avatar">李</div>
+        <div>
+          <div class="review-name">李小姐</div>
+          <div class="review-from">广州 · 医疗观光</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">「包了辆9座车带全家来首尔玩，司机大哥中文超好，景点吃饭都帮安排，价格也很透明，比自己安排省心太多！」</p>
+      <div class="review-author">
+        <div class="review-avatar">王</div>
+        <div>
+          <div class="review-name">王先生</div>
+          <div class="review-from">上海 · 家庭包车游</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">「帮我抢到了IVE演唱会的票，还安排了包车接送，应援棒也帮代购好了。追星无死角，满分服务！」</p>
+      <div class="review-author">
+        <div class="review-avatar">陈</div>
+        <div>
+          <div class="review-name">陈小姐</div>
+          <div class="review-from">香港 · 演唱会服务</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 资质信任 -->
+  <div class="trust-card">
+    <div class="trust-item">
+      <div class="trust-icon">🏅</div>
+      <div class="trust-text">
+        <div class="title">旅游业正规登录</div>
+        <div class="sub">관광사업등록증 제2025-000023호</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🏥</div>
+      <div class="trust-text">
+        <div class="title">医疗观光专业认证</div>
+        <div class="sub">对接50+正规医疗机构</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🌐</div>
+      <div class="trust-text">
+        <div class="title">华语全方位服务</div>
+        <div class="sub">大陆·香港·台湾·海外华人</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🕐</div>
+      <div class="trust-text">
+        <div class="title">24小时中文客服</div>
+        <div class="sub">微信/WhatsApp即时响应</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部CTA -->
+  <div class="bottom-cta" id="contact">
+    <div class="bottom-cta-text">
+      <h2>准备好出发了吗？立即咨询 🚀</h2>
+      <p>告诉我们您的需求，我们在24小时内为您出具专属方案</p>
+    </div>
+    <div class="bottom-cta-btns">
+      <a href="#" class="btn-cta-primary">💬 微信咨询（即将开放）</a>
+      <a href="#" class="btn-cta-outline">📞 电话联系（即将开放）</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="name">奶爸韩游 NB Travel</div>
+      <div class="sub">엔비트래블 · 韩国华语旅游管家</div>
+      <div class="desc">专注华语圈旅客的韩国一站式服务，医疗观光、定制包车、演唱会全程管家，十年在韩深耕，让您安心出行。</div>
+    </div>
+    <div class="footer-col">
+      <h4>服务项目</h4>
+      <ul>
+        <li><a href="medical.html">医疗观光</a></li>
+        <li><a href="tour.html">定制包车游</a></li>
+        <li><a href="seoul-tour.html">首尔一日游</a></li>
+        <li><a href="concerts.html">演唱会票务</a></li>
+        <li><a href="#">机场接送</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>关于我们</h4>
+      <ul>
+        <li><a href="#">公司介绍</a></li>
+        <li><a href="#">资质证书</a></li>
+        <li><a href="#">合作医院</a></li>
+        <li><a href="#">韩游攻略</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>联系我们</h4>
+      <ul>
+        <li><a href="#" style="opacity:.4">💬 微信（即将开放）</a></li>
+        <li><a href="#" style="opacity:.4">📱 WhatsApp（即将开放）</a></li>
+        <li><a href="#">📕 小红书：奶爸韩游</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 NB Travel 奶爸韩游（엔비트래블）· 사업자등록번호：106-26-23484</span>
+    <div>
+      <span class="cert-tag">관광사업등록증 제2025-000023호</span>
+      <span class="cert-tag">종합여행업 정식등록</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 浮动按钮 -->
+<div class="float-btns">
+  <a href="#" class="float-btn fb-wechat">💬<div class="float-tooltip">微信咨询</div></a>
+  <a href="#" class="float-btn fb-wa">📱<div class="float-tooltip">WhatsApp</div></a>
+  <a href="#" class="float-btn fb-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑<div class="float-tooltip">回到顶部</div></a>
+</div>
+
+</body>
+</html>

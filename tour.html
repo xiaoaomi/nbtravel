@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定制包车 · 接送机 | 奶爸韩游 NB Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a; }
+
+/* NAVBAR */
+.navbar {
+  background:#fff; height:60px;
+  display:flex; align-items:center; padding:0 40px; gap:24px;
+  position:sticky; top:0; z-index:100;
+  box-shadow:0 1px 6px rgba(0,0,0,.08);
+}
+.navbar-brand { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
+.brand-logo {
+  width:36px; height:36px;
+  background:linear-gradient(135deg,#0063CC,#0086F6);
+  border-radius:8px; display:flex; align-items:center; justify-content:center;
+  font-size:15px; font-weight:900; color:#fff;
+}
+.brand-text .cn { font-size:15px; font-weight:700; color:#0086F6; }
+.brand-text .en { font-size:11px; color:#999; letter-spacing:1px; }
+.navbar-nav { display:flex; gap:20px; list-style:none; }
+.navbar-nav a { font-size:14px; color:#555; text-decoration:none; transition:color .2s; }
+.navbar-nav a:hover { color:#0086F6; }
+.navbar-nav a.active { color:#0086F6; font-weight:600; }
+.navbar-right { margin-left:auto; }
+.navbar-cta {
+  background:linear-gradient(90deg,#FF6B35,#FF4D4F);
+  color:#fff !important; padding:8px 20px; border-radius:20px;
+  font-size:13px; font-weight:700; text-decoration:none; white-space:nowrap;
+}
+
+/* HERO */
+.page-hero {
+  background:linear-gradient(150deg,rgba(11,25,60,.9) 0%,rgba(27,58,122,.75) 100%),
+    url('car3.jpg') center/cover no-repeat;
+  padding:60px 48px 52px;
+  text-align:center;
+}
+.page-hero h1 { font-size:42px; font-weight:900; color:#fff; line-height:1.2; margin-bottom:10px; }
+.page-hero h1 em { color:#FFD666; font-style:normal; }
+.page-hero p { font-size:15px; color:rgba(255,255,255,.7); }
+.breadcrumb { font-size:12px; color:rgba(255,255,255,.45); margin-bottom:16px; }
+.breadcrumb a { color:rgba(255,255,255,.45); text-decoration:none; }
+
+/* TABS */
+.tabs-bar {
+  background:#fff;
+  display:flex; border-bottom:2px solid #eee;
+  max-width:900px; margin:32px auto 0;
+  border-radius:12px 12px 0 0; overflow:hidden;
+}
+.tab-btn {
+  flex:1; padding:16px; text-align:center;
+  font-size:15px; font-weight:700; color:#666;
+  background:none; border:none; cursor:pointer;
+  border-bottom:3px solid transparent; transition:all .2s;
+}
+.tab-btn.active { color:#0086F6; border-bottom-color:#0086F6; background:#f0f8ff; }
+
+/* SECTION WRAPPER */
+.section-wrap {
+  max-width:900px; margin:0 auto; padding:0 16px 60px;
+}
+
+/* SECTION TITLE */
+.sec-title {
+  font-size:20px; font-weight:800; color:#1a1a1a;
+  padding:28px 0 16px; border-bottom:2px solid #e8e8e8; margin-bottom:20px;
+}
+.sec-title span { color:#0086F6; }
+
+/* 车型卡片 */
+.car-list { display:flex; flex-direction:column; gap:12px; }
+.car-row {
+  background:#fff; border-radius:12px;
+  padding:20px 24px;
+  display:flex; align-items:center; gap:20px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  transition:box-shadow .2s;
+}
+.car-row:hover { box-shadow:0 4px 16px rgba(0,0,0,.1); }
+.car-emoji { font-size:32px; flex-shrink:0; width:48px; text-align:center; }
+.car-main { flex:1; }
+.car-name { font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:4px; }
+.car-seats { font-size:12px; color:#888; }
+.car-price-area { text-align:right; flex-shrink:0; }
+.car-price { font-size:22px; font-weight:900; color:#0086F6; }
+.car-price-unit { font-size:12px; color:#888; }
+.car-service { font-size:11px; color:#aaa; margin-top:2px; }
+.car-extra { font-size:11px; color:#FF6B35; margin-top:2px; }
+.badge-hot {
+  display:inline-block; background:#FF4D4F; color:#fff;
+  font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; margin-left:6px;
+  vertical-align:middle;
+}
+.badge-lux {
+  display:inline-block; background:#8B5CF6; color:#fff;
+  font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; margin-left:6px;
+  vertical-align:middle;
+}
+
+/* 接送机表格 */
+.transfer-section { margin-bottom:32px; }
+.transfer-title {
+  font-size:16px; font-weight:700; color:#1a1a1a;
+  padding:16px 0 12px; display:flex; align-items:center; gap:8px;
+}
+.transfer-grid { display:flex; flex-direction:column; gap:8px; }
+.transfer-row {
+  background:#fff; border-radius:10px;
+  padding:16px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+}
+.transfer-dest { font-size:14px; font-weight:600; color:#333; }
+.transfer-price { font-size:20px; font-weight:900; color:#0086F6; }
+.transfer-price-unit { font-size:11px; color:#888; font-weight:400; }
+
+/* 注意事项 */
+.notice-box {
+  background:#fffbf0; border:1px solid #ffe58f; border-radius:10px;
+  padding:16px 20px; margin-top:24px;
+  font-size:13px; color:#6b4f00; line-height:1.9;
+}
+.notice-box .notice-title { font-weight:700; margin-bottom:6px; }
+
+/* 询价 CTA */
+.cta-block {
+  background:linear-gradient(135deg,#0063CC,#0086F6);
+  border-radius:16px; padding:32px 28px; text-align:center; margin-top:32px;
+}
+.cta-block h3 { font-size:20px; font-weight:800; color:#fff; margin-bottom:8px; }
+.cta-block p { font-size:14px; color:rgba(255,255,255,.8); margin-bottom:20px; }
+.cta-btn {
+  display:inline-block; background:#FF6B35; color:#fff;
+  padding:13px 36px; border-radius:24px;
+  font-size:15px; font-weight:700; text-decoration:none;
+}
+.cta-btn:hover { background:#FF4D4F; }
+
+/* FOOTER */
+footer {
+  background:#1a1f2e; padding:28px 40px;
+  display:flex; justify-content:space-between; align-items:center;
+  color:rgba(255,255,255,.4); font-size:12px; flex-wrap:wrap; gap:12px;
+}
+.footer-nav { display:flex; gap:20px; list-style:none; }
+.footer-nav a { color:rgba(255,255,255,.5); text-decoration:none; font-size:13px; transition:color .2s; }
+.footer-nav a:hover { color:#fff; }
+.footer-brand { font-size:14px; font-weight:700; color:rgba(255,255,255,.8); }
+
+/* 响应式 */
+@media (max-width:768px) {
+  .navbar { padding:0 16px; height:56px; }
+  .navbar-nav { display:none; }
+  .brand-text .en { display:none; }
+  .page-hero { padding:48px 20px 40px; }
+  .page-hero h1 { font-size:28px; }
+  .tabs-bar { margin:20px 12px 0; border-radius:10px 10px 0 0; }
+  .tab-btn { font-size:13px; padding:13px 8px; }
+  .section-wrap { padding:0 12px 48px; }
+  .car-row { padding:14px 16px; gap:12px; }
+  .car-emoji { font-size:24px; width:36px; }
+  .car-name { font-size:14px; }
+  .car-price { font-size:18px; }
+  .transfer-row { padding:12px 16px; }
+  footer { padding:20px 16px; flex-direction:column; gap:8px; text-align:center; }
+  .footer-nav { flex-wrap:wrap; justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <div class="brand-logo">奶</div>
+    <div class="brand-text">
+      <div class="cn">奶爸韩游</div>
+      <div class="en">NB Travel Korea</div>
+    </div>
+  </a>
+  <ul class="navbar-nav">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="medical.html">医疗观光</a></li>
+    <li><a href="tour.html" class="active">定制包车·接送机</a></li>
+    <li><a href="seoul-tour.html">首尔一日游</a></li>
+    <li><a href="#">演唱会票务</a></li>
+  </ul>
+  <div class="navbar-right">
+    <a href="#cta" class="navbar-cta">📞 立即询价</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="breadcrumb"><a href="index.html">首页</a> / <span>定制包车·接送机</span></div>
+  <h1>定制包车 · <em>接送机</em></h1>
+  <p>豪华商务车队 · 全程中文司导 · 透明报价无隐费</p>
+</section>
+
+<!-- TABS -->
+<div class="tabs-bar" style="max-width:900px;margin:32px auto 0;border-radius:12px 12px 0 0;">
+  <button class="tab-btn active" onclick="switchTab('charter',this)">🚐 定制包车</button>
+  <button class="tab-btn" onclick="switchTab('transfer',this)">✈️ 接送机</button>
+</div>
+
+<!-- 定制包车 -->
+<div id="tab-charter" class="section-wrap" style="background:#f5f6f8;border-radius:0 0 12px 12px;max-width:900px;margin:0 auto;padding:24px 24px 48px;">
+
+  <div class="sec-title">车型 · 首尔市区报价<span>（万韩币）</span></div>
+
+  <div class="car-list">
+
+    <div class="car-row">
+      <div class="car-emoji">🚐</div>
+      <div class="car-main">
+        <div class="car-name">起亚 嘉华 Carnival<span class="badge-hot">主力推荐</span></div>
+        <div class="car-seats">7 - 9 座</div>
+      </div>
+      <div class="car-price-area">
+        <div class="car-price">135<span class="car-price-unit"> 万₩</span></div>
+        <div class="car-service">服务 9 小时</div>
+        <div class="car-extra">超时 15 万₩/小时</div>
+      </div>
+    </div>
+
+    <div class="car-row">
+      <div class="car-emoji">🚌</div>
+      <div class="car-main">
+        <div class="car-name">现代 斯塔利亚 Staria</div>
+        <div class="car-seats">7 - 9 - 11 座</div>
+      </div>
+      <div class="car-price-area">
+        <div class="car-price">140<span class="car-price-unit"> 万₩</span></div>
+        <div class="car-service">服务 9 小时</div>
+        <div class="car-extra">超时 18 万₩/小时</div>
+      </div>
+    </div>
+
+    <div class="car-row">
+      <div class="car-emoji">👑</div>
+      <div class="car-main">
+        <div class="car-name">丰田 埃尔法<span class="badge-lux">豪华</span></div>
+        <div class="car-seats">6 - 7 座</div>
+      </div>
+      <div class="car-price-area">
+        <div class="car-price">270<span class="car-price-unit"> 万₩</span></div>
+        <div class="car-service">服务 8 小时</div>
+        <div class="car-extra">超时 35 万₩/小时</div>
+      </div>
+    </div>
+
+    <div class="car-row">
+      <div class="car-emoji">⭐</div>
+      <div class="car-main">
+        <div class="car-name">奔驰商务 17 座<span class="badge-lux">商务</span></div>
+        <div class="car-seats">17 座</div>
+      </div>
+      <div class="car-price-area">
+        <div class="car-price">300<span class="car-price-unit"> 万₩</span></div>
+        <div class="car-service">服务 9 小时</div>
+        <div class="car-extra">超时 30 万₩/小时</div>
+      </div>
+    </div>
+
+    <div class="car-row">
+      <div class="car-emoji">🚍</div>
+      <div class="car-main">
+        <div class="car-name">豪华大巴 28 座</div>
+        <div class="car-seats">28 座 · 全航空座椅</div>
+      </div>
+      <div class="car-price-area">
+        <div class="car-price">450<span class="car-price-unit"> 万₩</span></div>
+        <div class="car-service">服务 9 小时</div>
+        <div class="car-extra">超时 30 万₩/小时</div>
+      </div>
+    </div>
+
+    <div class="car-row">
+      <div class="car-emoji">🚌</div>
+      <div class="car-main">
+        <div class="car-name">旅游大巴 45 座</div>
+        <div class="car-seats">45 座</div>
+      </div>
+      <div class="car-price-area">
+        <div class="car-price">350<span class="car-price-unit"> 万₩</span></div>
+        <div class="car-service">服务 9 小时</div>
+        <div class="car-extra">超时 30 万₩/小时</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="notice-box">
+    <div class="notice-title">📌 说明</div>
+    以上报价为首尔市区标准价格 · 济州岛/釜山/近郊另报<br>
+    超出服务时间按小时计费，不足1小时按1小时算<br>
+    价格含司机费、燃油费，景点门票及停车费另计<br>
+    可提供中文司机，如需导游讲解请提前告知
+  </div>
+
+  <div class="cta-block" id="cta">
+    <h3>告诉我们您的需求</h3>
+    <p>出行日期 · 人数 · 目的地 → 24小时内回复报价</p>
+    <a href="https://wa.me/" class="cta-btn">💬 立即询价</a>
+  </div>
+
+</div>
+
+<!-- 接送机 -->
+<div id="tab-transfer" class="section-wrap" style="display:none;background:#f5f6f8;border-radius:0 0 12px 12px;max-width:900px;margin:0 auto;padding:24px 24px 48px;">
+
+  <!-- 仁川机场 -->
+  <div class="transfer-section">
+    <div class="transfer-title">✈️ 仁川机场接送</div>
+    <div class="transfer-grid">
+      <div class="transfer-row">
+        <div class="transfer-dest">📍 首尔市区</div>
+        <div><span class="transfer-price">35<span class="transfer-price-unit"> 万₩</span></span></div>
+      </div>
+      <div class="transfer-row">
+        <div class="transfer-dest">📍 首尔江南区</div>
+        <div><span class="transfer-price">40<span class="transfer-price-unit"> 万₩</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 金浦机场 -->
+  <div class="transfer-section">
+    <div class="transfer-title">🛬 金浦机场接送</div>
+    <div class="transfer-grid">
+      <div class="transfer-row">
+        <div class="transfer-dest">📍 首尔市区</div>
+        <div><span class="transfer-price">30<span class="transfer-price-unit"> 万₩</span></span></div>
+      </div>
+      <div class="transfer-row">
+        <div class="transfer-dest">📍 首尔江南区</div>
+        <div><span class="transfer-price">35<span class="transfer-price-unit"> 万₩</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice-box">
+    <div class="notice-title">📌 说明</div>
+    以上为嘉华 7-9座标准接送报价<br>
+    升级车型（斯塔利亚/埃尔法等）请询价<br>
+    航班延误等待不加价 · 行李搬运协助 · 中文接机牌<br>
+    接机含30分钟免费等待时间
+  </div>
+
+  <div class="cta-block">
+    <h3>预约接送机</h3>
+    <p>提供航班号 · 到达时间 · 目的地 → 即时确认</p>
+    <a href="https://wa.me/" class="cta-btn">💬 立即预约</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">🇰🇷 奶爸韩游 NB Travel</div>
+  <ul class="footer-nav">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="medical.html">医疗观光</a></li>
+    <li><a href="tour.html">定制包车</a></li>
+    <li><a href="seoul-tour.html">首尔一日游</a></li>
+  </ul>
+  <span>© 2025 엔비트래블 NB Travel 奶爸韩游 · 관광사업등록증 제2025-000023호</span>
+</footer>
+
+<script>
+function switchTab(tab, btn) {
+  document.getElementById('tab-charter').style.display = tab === 'charter' ? 'block' : 'none';
+  document.getElementById('tab-transfer').style.display = tab === 'transfer' ? 'block' : 'none';
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>

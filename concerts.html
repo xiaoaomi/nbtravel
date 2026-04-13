@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026韩国演唱会·音乐节 | NB Travel 奶爸韩游</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif; background: #f5f5f7; color: #333; }
+        
+        /* ===== 顶部导航 ===== */
+        .top-nav {
+            background: #1a1a2e;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        .top-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .top-nav .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        .top-nav .logo span { color: #e94560; }
+        .top-nav .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .top-nav .nav-links a:hover, .top-nav .nav-links a.active { color: #e94560; }
+
+        /* ===== 头部横幅 ===== */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 60px 20px 50px;
+            text-align: center;
+            color: #fff;
+        }
+        .hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+        .hero h1 span { color: #e94560; }
+        .hero p { font-size: 16px; color: #aaa; margin-bottom: 24px; }
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .hero .stat-item { text-align: center; }
+        .hero .stat-num { font-size: 32px; font-weight: 700; color: #e94560; }
+        .hero .stat-label { font-size: 13px; color: #888; margin-top: 4px; }
+
+        /* ===== 月份筛选栏 ===== */
+        .filter-bar {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 16px 0;
+            position: sticky;
+            top: 48px;
+            z-index: 90;
+        }
+        .filter-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .filter-bar .label { font-size: 14px; color: #666; font-weight: 600; }
+        .filter-btn {
+            padding: 6px 18px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #666;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #e94560;
+            color: #fff;
+            border-color: #e94560;
+        }
+
+        /* ===== 演出列表 ===== */
+        .concert-list {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .month-section { margin-bottom: 40px; }
+        .month-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            padding-left: 12px;
+            border-left: 4px solid #e94560;
+        }
+
+        /* ===== 大麦风格卡片 ===== */
+        .concert-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .concert-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .card-poster {
+            width: 240px;
+            min-height: 320px;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .concert-card:hover .card-poster img { transform: scale(1.05); }
+        
+        /* 状态标签 */
+        .status-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .status-tag.on-sale { background: #e94560; }
+        .status-tag.upcoming { background: #f59e0b; }
+        .status-tag.hot { background: #ef4444; }
+
+        /* 卡片信息 */
+        .card-info {
+            flex: 1;
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .info-row .icon {
+            width: 20px;
+            margin-right: 10px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .info-row .text { line-height: 1.5; }
+        .info-row .text strong { color: #1a1a2e; }
+        
+        .card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .price { font-size: 18px; font-weight: 700; color: #e94560; }
+        .price small { font-size: 12px; color: #999; font-weight: 400; }
+        .btn-buy {
+            padding: 10px 28px;
+            background: #e94560;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .btn-buy:hover { background: #d63851; }
+        .btn-buy.gray { background: #ccc; cursor: default; }
+
+        /* ===== CTA区域 ===== */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            padding: 60px 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section h2 { font-size: 28px; margin-bottom: 16px; }
+        .cta-section p { font-size: 16px; color: #aaa; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .cta-btn {
+            padding: 14px 36px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .cta-btn.primary { background: #e94560; color: #fff; }
+        .cta-btn.primary:hover { background: #d63851; }
+        .cta-btn.outline { border: 2px solid #fff; color: #fff; }
+        .cta-btn.outline:hover { background: rgba(255,255,255,0.1); }
+
+        /* ===== 底部 ===== */
+        .footer {
+            background: #111;
+            color: #666;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer a { color: #888; text-decoration: none; }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .concert-card { flex-direction: column; }
+            .card-poster { width: 100%; min-height: 280px; max-height: 400px; }
+            .hero h1 { font-size: 26px; }
+            .hero .stats { gap: 20px; }
+            .hero .stat-num { font-size: 24px; }
+            .card-info h3 { font-size: 17px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<nav class="top-nav">
+    <div class="container">
+        <a href="index.html" class="logo">NB <span>Travel</span></a>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="medical.html">医疗</a>
+            <a href="concerts.html" class="active">演唱会</a>
+            <a href="seoul-tour.html">首尔游</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 头部横幅 -->
+<section class="hero">
+    <h1>2026 韩国<span>演唱会</span>·音乐节</h1>
+    <p>全部真实信息来自韩国Interpark票务平台 | NB Travel代购·接送·住宿一站式服务</p>
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-num">7+</div>
+            <div class="stat-label">确认场次</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">4</div>
+            <div class="stat-label">城市覆盖</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">5-10月</div>
+            <div class="stat-label">持续更新</div>
+        </div>
+    </div>
+</section>
+
+<!-- 月份筛选栏 -->
+<div class="filter-bar">
+    <div class="container">
+        <span class="label">月份</span>
+        <button class="filter-btn active" onclick="filterMonth('all')">全部</button>
+        <button class="filter-btn" onclick="filterMonth('5')">5月</button>
+        <button class="filter-btn" onclick="filterMonth('6')">6月</button>
+        <button class="filter-btn" onclick="filterMonth('7')">7月</button>
+        <button class="filter-btn" onclick="filterMonth('10')">10月</button>
+        <span class="label" style="margin-left:20px;">城市</span>
+        <button class="filter-btn active" onclick="filterCity('all')">全部</button>
+        <button class="filter-btn" onclick="filterCity('seoul')">首尔</button>
+        <button class="filter-btn" onclick="filterCity('busan')">釜山</button>
+        <button class="filter-btn" onclick="filterCity('goyang')">高阳</button>
+    </div>
+</div>
+
+<!-- 演出列表 -->
+<div class="concert-list">
+
+    <!-- 5月 -->
+    <div class="month-section" data-month="5">
+        <h2 class="month-title">5月 MAY</h2>
+
+        <!-- ENHYPEN -->
+        <div class="concert-card" data-month="5" data-city="seoul">
+            <div class="card-poster">
+                <img src="posters/enhypen_blood_saga.gif" alt="ENHYPEN BLOOD SAGA">
+                <span class="status-tag hot">🔥 热门</span>
+            </div>
+            <div class="card-info">
+                <div>
+                    <h3>ENHYPEN WORLD TOUR 'BLOOD SAGA' IN SEOUL</h3>
+                    <div class="info-row"><span class="icon">📅</span><span class="text"><strong>2026.05.01(五) ~ 05.03(日)</strong> 共3天</span></div>
+                    <div class="info-row"><span class="icon">📍</span><span class="text">KSPO DOME（首尔奥林匹克公园）</span></div>
+                    <div class="info-row"><span class="icon">⏰</span><span class="text">5/1 19:00 | 5/2 18:00 | 5/3 17:00</span></div>
+                    <div class="info-row"><span class="icon">🎫</span><span class="text">Interpark Play&Stay套餐已开售</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="price">咨询NB Travel <small>代购·接送</small></div>
+                    <a href="#contact" class="btn-buy">立即咨询</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- HIPHOPPLAYA -->
+        <div class="concert-card" data-month="5" data-city="goyang">
+            <div class="card-poster">
+                <img src="posters/hiphopplaya_2026.gif" alt="HIPHOPPLAYA FESTIVAL 2026">
+                <span class="status-tag on-sale">售票中</span>
+            </div>
+            <div class="card-info">
+                <div>
+                    <h3>HIPHOPPLAYA FESTIVAL 2026</h3>
+                    <div class="info-row"><span class="icon">📅</span><span class="text"><strong>2026.05.02(六)</strong> 1天</span></div>
+                    <div class="info-row"><span class="icon">📍</span><span class="text">KINTEX 第2展示场 9&10号馆（高阳市）</span></div>
+                    <div class="info-row"><span class="icon">💰</span><span class="text">普通票 ₩149,000 / PGA ₩239,000</span></div>
+                    <div class="info-row"><span class="icon">🎵</span><span class="text">韩国最大嘻哈音乐节 · 顶级阵容</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="price">₩149,000 <small>起</small></div>
+                    <a href="#contact" class="btn-buy">立即咨询</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PEAK FESTIVAL -->
+        <div class="concert-card" data-month="5" data-city="seoul">
+            <div class="card-poster">
+                <img src="posters/peak_festival_2026.gif" alt="PEAK FESTIVAL 2026">
+                <span class="status-tag on-sale">售票中</span>
+            </div>
+            <div class="card-info">
+                <div>
+                    <h3>PEAK FESTIVAL 2026</h3>
+                    <div class="info-row"><span class="icon">📅</span><span class="text"><strong>2026.05.23(六) ~ 05.24(日)</strong> 2天</span></div>
+                    <div class="info-row"><span class="icon">📍</span><span class="text">兰芝汉江公园（首尔）</span></div>
+                    <div class="info-row"><span class="icon">🎵</span><span class="text">户外音乐节 · 汉江畔绝美场地</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="price">咨询NB Travel</div>
+                    <a href="#contact" class="btn-buy">立即咨询</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- I.O.I -->
+        <div class="concert-card" data-month="5" data-city="seoul">
+            <div class="card-poster">
+                <img src="posters/ioi_loop.gif" alt="I.O.I LOOP">
+                <span class="status-tag hot">🔥 热门</span>
+            </div>
+            <div class="card-info">
+                <div>
+                    <h3>2026 I.O.I Concert Tour: LOOP in SEOUL</h3>
+                    <div class="info-row"><span class="icon">📅</span><span class="text"><strong>2026.05.29(五) ~ 05.31(日)</strong> 3天</span></div>
+                    <div class="info-row"><span class="icon">📍</span><span class="text">蚕室室内体育馆（首尔）</span></div>
+                    <div class="info-row"><span class="icon">🎫</span><span class="text">Interpark 独家售票</span></div>
+                    <div class="info-row"><span class="icon">🎵</span><span class="text">I.O.I传奇女团 · 回归演唱会</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="price">咨询NB Travel <small>代购·接送</small></div>
+                    <a href="#contact" class="btn-buy">立即咨询</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beautiful Mint Life -->
+        <div class="concert-card" data-month="5" data-city="seoul">
+            <div class="card-poster">
+                <img src="posters/bml_2026.gif" alt="Beautiful Mint Life 2026">
+                <span class="status-tag on-sale">售票中</span>
+            </div>
+            <div class="card-info">
+                <div>
+                    <h3>뷰티풀 민트 라이프 2026 (Beautiful Mint Life)</h3>
+                    <div class="info-row"><span class="icon">📅</span><span class="text"><strong>2026.05.30(六) ~ 05.31(日)</strong> 2天</span></div>
+                    <div class="info-row"><span class="icon">📍</span><span class="text">文化储备基地（首尔麻浦区）</span></div>
+                    <div class="info-row"><span class="icon">💰</span><span class="text">1日券 ₩99,000起</span></div>
+                    <div class="info-row"><span class="icon">🎵</span><span class="text">韩国最文艺的独立音乐节</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="price">₩99,000 <small>起</small></div>
+                    <a href="#contact" class="btn-buy">立即咨询</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6月 -->
+    <div class="month-section" data-month="6">
+        <h2 class="month-title">6月 JUNE</h2>
+
+        <!-- BTS -->
+        <div class="concert-card" data-month="6" data-city="busan">
+            <div class="card-poster">
+                <img src="bts_official.jpg" alt="BTS ARIRANG World Tour">
+                <span class="status-tag upcoming">即将开票</span>
+            </div>
+            <div class="card-info">
+                <div>
+                    <h3>BTS WORLD TOUR 'ARIRANG' 釜山站</h3>
+                    <div class="info-row"><span class="icon">📅</span><span class="text"><strong>2026.06.12(五) ~ 06.13(六)</strong> 2天</span></div>
+                    <div class="info-row"><span class="icon">📍</span><span class="text">釜山亚运会主体育场（釜山）</span></div>
+                    <div class="info-row"><span class="icon">⏰</span><span class="text">尚未开票 · 预计Interpark/Weverse售票</span></div>
+                    <div class="info-row"><span class="icon">🎵</span><span class="text">BTS全体回归！2026年度最重磅演唱会</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="price">开票后第一时间通知 <small>预约NB Travel</small></div>
+                    <a href="#contact" class="btn-buy">预约抢票</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7月 -->
+    <div class="month-section" data-month="7">
+        <h2 class="month-title">7月 JULY</h2>
+
+        <!-- WATERBOMB -->
+        <div class="concert-card" data-month="7" data-city="goyang">
+            <div class="card-poster">
+                <img src="posters/waterbomb_2026_official.jpg" alt="WATERBOMB SEOUL 2026">
+                <span class="status-tag on-sale">售票中</span>
+            </div>
+            <div class="card-info">
+                <div>
+                    <h3>WATERBOMB SEOUL 2026</h3>
+                    <div class="info-row"><span class="icon">📅</span><span class="text"><strong>2026.07.24(五) ~ 07.26(日)</strong> 3天</span></div>
+                    <div class="info-row"><span class="icon">📍</span><span class="text">KINTEX 户外舞台（高阳市）</span></div>
+                    <div class="info-row"><span class="icon">🎵</span><span class="text">韩国最火夏日水上音乐节 · 全球网红打卡</span></div>
+                    <div class="info-row"><span class="icon">🎫</span><span class="text">Interpark / waterbombfestival.com</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="price">咨询NB Travel <small>套餐服务</small></div>
+                    <a href="#contact" class="btn-buy">立即咨询</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- CTA区域 -->
+<section class="cta-section" id="contact">
+    <h2>NB Travel 一站式韩国演唱会服务</h2>
+    <p>代购门票 · 机场接送 · 酒店预订 · 现场应援 · 周边代买<br>让你的追星之旅零烦恼！</p>
+    <div class="cta-buttons">
+        <a href="#" class="cta-btn primary">📱 WhatsApp咨询</a>
+        <a href="#" class="cta-btn outline">💬 微信咨询</a>
+    </div>
+    <p style="margin-top:20px; font-size:13px; color:#666;">持续更新中 · BABYMONSTER / Post Malone / LUCY 等更多场次即将添加</p>
+</section>
+
+<!-- 底部 -->
+<footer class="footer">
+    <p>© 2026 NB Travel 奶爸韩游 | 数据来源：韩国Interpark票务平台</p>
+    <p style="margin-top:8px;"><a href="index.html">首页</a> · <a href="medical.html">医疗旅游</a> · <a href="concerts.html">演唱会</a> · <a href="seoul-tour.html">首尔游</a></p>
+</footer>
+
+<script>
+// 简单筛选
+function filterMonth(m) {
+    document.querySelectorAll('.month-section').forEach(s => {
+        if (m === 'all' || s.dataset.month === m) {
+            s.style.display = '';
+        } else {
+            s.style.display = 'none';
+        }
+    });
+}
+function filterCity(c) {
+    document.querySelectorAll('.concert-card').forEach(card => {
+        if (c === 'all' || card.dataset.city === c) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+
+</body>
+</html>

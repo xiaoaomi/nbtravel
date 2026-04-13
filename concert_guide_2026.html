@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>2026 韩国K-POP演唱会日程 5~12月 | NB Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter','Noto Sans SC',sans-serif; background:#080808; color:#fff; width:900px; }
+
+/* COVER */
+.cover { background:linear-gradient(135deg,#0a0a1a,#1a0530,#0a1a0a); padding:60px 56px 44px; border-bottom:1px solid #1a1a1a; }
+.cover-tag { display:inline-block; background:rgba(250,204,21,.15); border:1px solid rgba(250,204,21,.3); color:#fbbf24; font-size:11px; font-weight:700; padding:5px 14px; border-radius:3px; letter-spacing:2px; margin-bottom:22px; }
+.cover-title { font-size:42px; font-weight:900; line-height:1.1; letter-spacing:-1.5px; margin-bottom:10px; }
+.cover-title em { color:#fbbf24; font-style:normal; }
+.cover-title span { color:#60a5fa; }
+.cover-sub { font-size:15px; color:#444; font-weight:300; margin-bottom:36px; }
+.cover-stats { display:flex; gap:44px; padding-top:28px; border-top:1px solid #1a1a1a; }
+.cs-num { font-size:26px; font-weight:900; color:#fbbf24; }
+.cs-label { font-size:11px; color:#333; margin-top:3px; }
+
+/* MONTH HEADER */
+.month-hd {
+  padding:14px 56px 8px;
+  background:#0a0a0a;
+  border-bottom:1px solid #111;
+}
+.month-tag { font-size:10px; font-weight:700; letter-spacing:3px; color:#333; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+.month-tag::after { content:''; flex:1; height:1px; background:#1a1a1a; }
+.month-name { font-size:20px; font-weight:900; color:#fff; margin-top:4px; }
+
+/* CONCERT CARD */
+.concert { display:grid; grid-template-columns:68px 1fr auto; gap:20px; align-items:center; background:#111; padding:16px 56px 16px 20px; border-left:0; margin-left:56px; margin-right:0; border-bottom:1px solid #0d0d0d; }
+.concert:first-of-type { }
+.concert.tier-bts { border-left:4px solid #fbbf24; }
+.concert.tier-hot { border-left:4px solid #f472b6; }
+.concert.tier-kpop { border-left:4px solid #60a5fa; }
+.concert.tier-festival { border-left:4px solid #fb923c; }
+.concert.tier-idol { border-left:4px solid #34d399; }
+
+.date-box { text-align:center; }
+.date-mo { font-size:9px; font-weight:700; color:#333; letter-spacing:2px; text-transform:uppercase; }
+.date-d { font-size:26px; font-weight:900; color:#fff; line-height:1; }
+.date-wd { font-size:9px; color:#333; margin-top:1px; }
+
+.info-wrap { }
+.info-artist { font-size:15px; font-weight:800; color:#fff; margin-bottom:3px; }
+.info-tour { font-size:11px; color:#555; font-style:italic; margin-bottom:4px; }
+.info-venue { font-size:11px; color:#444; }
+.info-venue::before { content:'📍'; font-size:9px; margin-right:4px; }
+
+.meta-wrap { text-align:right; }
+.badge { display:inline-block; font-size:10px; font-weight:700; padding:3px 8px; border-radius:2px; margin-bottom:4px; }
+.badge-hot { background:rgba(251,191,36,.12); color:#fbbf24; }
+.badge-bts { background:rgba(251,191,36,.12); color:#fbbf24; }
+.badge-kpop { background:rgba(96,165,250,.12); color:#60a5fa; }
+.badge-festival { background:rgba(251,146,60,.12); color:#fb923c; }
+.badge-idol { background:rgba(52,211,153,.12); color:#34d399; }
+.badge-pink { background:rgba(244,114,182,.12); color:#f472b6; }
+.meta-note { font-size:10px; color:#333; }
+
+/* NOTE BOX */
+.note { background:#0f0f0f; border:1px solid #1a1a1a; padding:14px 20px; margin:0 56px 4px; font-size:11px; color:#555; line-height:1.7; border-left:3px solid #333; }
+.note strong { color:#666; }
+
+/* SERVICE */
+.service { background:#111; padding:28px 56px; border-top:1px solid #111; }
+.svc-title { font-size:15px; font-weight:800; color:#fff; margin-bottom:6px; }
+.svc-sub { font-size:12px; color:#444; margin-bottom:18px; }
+.svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.svc-item-icon { font-size:18px; margin-bottom:7px; }
+.svc-item-name { font-size:12px; font-weight:700; color:#ccc; margin-bottom:3px; }
+.svc-item-desc { font-size:11px; color:#444; line-height:1.6; }
+
+/* FOOTER */
+.footer { padding:20px 56px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid #111; }
+.footer-brand { font-size:12px; color:#2a2a2a; }
+.footer-brand strong { color:#444; }
+.footer-note { font-size:10px; color:#1a1a1a; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">🎤 NB Travel · 演唱会接送 & 票务服务</div>
+  <div class="cover-title">2026 首尔 <em>K-POP</em><br>演唱会日程 <span>5~12月</span></div>
+  <div class="cover-sub">来源：Soompi / Interpark / Weverse / Trazy · 2026年4月整理 · 以官方最终公告为准</div>
+  <div class="cover-stats">
+    <div><div class="cs-num">20+</div><div class="cs-label">重磅演唱会/音乐节</div></div>
+    <div><div class="cs-num">8个月</div><div class="cs-label">5月~12月全覆盖</div></div>
+    <div><div class="cs-num">BTS回归</div><div class="cs-label">7年后全员复出世界巡演</div></div>
+  </div>
+</div>
+
+<!-- ── 5月 MAY ── -->
+<div class="month-hd"><div class="month-tag">May 2026</div><div class="month-name">5月</div></div>
+
+<div class="concert tier-festival">
+  <div class="date-box"><div class="date-mo">MAY</div><div class="date-d">02</div><div class="date-wd">SAT</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">HIPHOPPLAYA FESTIVAL 2026</div>
+    <div class="info-tour">Jay Park · Crush · Zion.T · LOCO · Bobby · Lee Young Ji 等</div>
+    <div class="info-venue">KINTEX 2展厅 9&10馆（高阳市）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-festival">FESTIVAL</span><div class="meta-note">Hip-Hop专场</div></div>
+</div>
+
+<div class="concert tier-bts">
+  <div class="date-box"><div class="date-mo">MAY</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">BTS — ARIRANG World Tour</div>
+    <div class="info-tour">BTS WORLD TOUR 'ARIRANG'（首尔场之后继续巡演中）</div>
+    <div class="info-venue">高阳综合运动场 등（Goyang Stadium，后续城市待官宣）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-bts">🔥 BTS回归</span><div class="meta-note">85场全球巡演</div></div>
+</div>
+
+<div class="concert tier-kpop">
+  <div class="date-box"><div class="date-mo">MAY</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">ENHYPEN</div>
+    <div class="info-tour">BLOOD SAGA World Tour — 首尔场（日期待官宣）</div>
+    <div class="info-venue">首尔大型场馆（待官宣）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-kpop">K-POP</span></div>
+</div>
+
+<div class="concert tier-idol">
+  <div class="date-box"><div class="date-mo">MAY</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">IVE</div>
+    <div class="info-tour">SHOW WHAT I AM World Tour — 首尔场</div>
+    <div class="info-venue">首尔/仁川大型场馆（待官宣）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-idol">4세대</span></div>
+</div>
+
+<!-- ── 6月 JUN ── -->
+<div class="month-hd"><div class="month-tag">June 2026</div><div class="month-name">6月</div></div>
+
+<div class="concert tier-bts">
+  <div class="date-box"><div class="date-mo">JUN</div><div class="date-d">12~13</div><div class="date-wd">FRI-SAT</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">BTS — ARIRANG World Tour（釜山场）</div>
+    <div class="info-tour">BTS WORLD TOUR 'ARIRANG' IN BUSAN</div>
+    <div class="info-venue">釜山（Busan）大型场馆 — 具体地址待官宣</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-bts">🔥 BTS</span><div class="meta-note">首尔后全国巡演</div></div>
+</div>
+
+<div class="concert tier-hot">
+  <div class="date-box"><div class="date-mo">JUN</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">MAMAMOO</div>
+    <div class="info-tour">MAMAMOO 演唱会（首尔场）</div>
+    <div class="info-venue">首尔大型场馆（待官宣）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-pink">Girl Group</span></div>
+</div>
+
+<div class="concert tier-kpop">
+  <div class="date-box"><div class="date-mo">JUN</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">TWICE</div>
+    <div class="info-tour">THIS IS FOR World Tour — 首尔场（延续中）</div>
+    <div class="info-venue">首尔/仁川 Inspire Arena</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-kpop">K-POP</span></div>
+</div>
+
+<div class="concert tier-idol">
+  <div class="date-box"><div class="date-mo">JUN</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">aespa</div>
+    <div class="info-tour">SYNK : aeXIS LINE World Tour — 首尔场（延续中）</div>
+    <div class="info-venue">KSPO Dome 或大型体育场</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-idol">4세대</span></div>
+</div>
+
+<!-- ── 7月 JUL ── -->
+<div class="month-hd"><div class="month-tag">July 2026</div><div class="month-name">7月</div></div>
+
+<div class="concert tier-bts">
+  <div class="date-box"><div class="date-mo">JUL</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">BTS — ARIRANG World Tour（亚洲延续）</div>
+    <div class="info-tour">BTS WORLD TOUR 'ARIRANG' — 亚洲场次继续</div>
+    <div class="info-venue">各城市体育场（日本/亚洲站待官宣）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-bts">🔥 BTS</span><div class="meta-note">全球85场</div></div>
+</div>
+
+<div class="concert tier-kpop">
+  <div class="date-box"><div class="date-mo">JUL</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">ENHYPEN</div>
+    <div class="info-tour">BLOOD SAGA World Tour — 亚洲场继续</div>
+    <div class="info-venue">亚洲各城市（日程陆续公布）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-kpop">K-POP</span></div>
+</div>
+
+<div class="concert tier-festival">
+  <div class="date-box"><div class="date-mo">JUL</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">WATERBOMB SEOUL 2026</div>
+    <div class="info-tour">워터밤 서울 — 夏日水枪K-POP音乐节（2025年已举办，2026预计延续）</div>
+    <div class="info-venue">首尔奥林匹克公园（Seoul Olympic Park）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-festival">FESTIVAL</span><div class="meta-note">夏日必去</div></div>
+</div>
+
+<!-- ── 8月 AUG ── -->
+<div class="month-hd"><div class="month-tag">August 2026</div><div class="month-name">8月</div></div>
+
+<div class="concert tier-bts">
+  <div class="date-box"><div class="date-mo">AUG</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">BTS — ARIRANG World Tour（欧美场）</div>
+    <div class="info-tour">北美/欧洲巡演期间（亚洲粉丝可关注周边场次）</div>
+    <div class="info-venue">欧美各城市（拉斯维加斯/纽约/巴黎/伦敦等）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-bts">🔥 BTS</span></div>
+</div>
+
+<div class="concert tier-idol">
+  <div class="date-box"><div class="date-mo">AUG</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">EXO</div>
+    <div class="info-tour">EXO 演唱会（全员回归后首场，日期待官宣）</div>
+    <div class="info-venue">首尔大型场馆（待官宣）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-idol">2세대</span><div class="meta-note">全员复出</div></div>
+</div>
+
+<!-- ── 9月 SEP ── -->
+<div class="month-hd"><div class="month-tag">September 2026</div><div class="month-name">9月</div></div>
+
+<div class="concert tier-bts">
+  <div class="date-box"><div class="date-mo">SEP</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">BTS — ARIRANG World Tour（亚洲/大洋洲场）</div>
+    <div class="info-tour">澳洲/新西兰及亚洲追加场（持续更新中）</div>
+    <div class="info-venue">各城市大型体育场</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-bts">🔥 BTS</span></div>
+</div>
+
+<div class="concert tier-festival">
+  <div class="date-box"><div class="date-mo">SEP</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">MyK FESTA K-POP Concert</div>
+    <div class="info-tour">WayV · aespa · ITZY 等多组联合演出</div>
+    <div class="info-venue">올림픽공원 KSPO돔（奥林匹克公园KSPO Dome）首尔</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-festival">MULTI-ARTIST</span></div>
+</div>
+
+<!-- ── 10月 OCT ── -->
+<div class="month-hd"><div class="month-tag">October 2026</div><div class="month-name">10月</div></div>
+
+<div class="concert tier-bts">
+  <div class="date-box"><div class="date-mo">OCT</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">BTS — ARIRANG World Tour（亚洲返场）</div>
+    <div class="info-tour">南美/亚洲追加场次</div>
+    <div class="info-venue">首尔/亚洲各城市（日程持续更新）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-bts">🔥 BTS</span></div>
+</div>
+
+<div class="concert tier-kpop">
+  <div class="date-box"><div class="date-mo">OCT</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">ENHYPEN</div>
+    <div class="info-tour">BLOOD SAGA World Tour — 亚洲场续</div>
+    <div class="info-venue">亚洲各城市</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-kpop">K-POP</span></div>
+</div>
+
+<div class="concert tier-festival">
+  <div class="date-box"><div class="date-mo">OCT~<br>NOV</div><div class="date-d"></div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">MAMA Awards 2026 / MMA 2026 / KGMA 2026</div>
+    <div class="info-tour">年末三大颁奖典礼 — 各大爱豆集体出席表演</div>
+    <div class="info-venue">首尔/仁川大型场馆（年末惯例）</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-festival">年末盛典</span></div>
+</div>
+
+<!-- ── 11~12月 NOV-DEC ── -->
+<div class="month-hd"><div class="month-tag">November – December 2026</div><div class="month-name">11~12月</div></div>
+
+<div class="concert tier-bts">
+  <div class="date-box"><div class="date-mo">NOV</div><div class="date-d">19~22</div><div class="date-wd">THU-SUN</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">BTS — ARIRANG World Tour（台湾场）</div>
+    <div class="info-tour">BTS WORLD TOUR 'ARIRANG' — 高雄站</div>
+    <div class="info-venue">台湾高雄（Kaohsiung）大型体育场</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-bts">🔥 BTS</span><div class="meta-note">亚洲最后站之一</div></div>
+</div>
+
+<div class="concert tier-bts">
+  <div class="date-box"><div class="date-mo">DEC</div><div class="date-d">03~06</div><div class="date-wd">THU-SUN</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">BTS — ARIRANG World Tour（曼谷场）</div>
+    <div class="info-tour">BTS WORLD TOUR 'ARIRANG' — 曼谷站</div>
+    <div class="info-venue">泰国曼谷（Bangkok）大型体育场</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-bts">🔥 BTS</span></div>
+</div>
+
+<div class="concert tier-kpop">
+  <div class="date-box"><div class="date-mo">DEC</div><div class="date-d">~</div><div class="date-wd">TBD</div></div>
+  <div class="info-wrap">
+    <div class="info-artist">ENHYPEN</div>
+    <div class="info-tour">BLOOD SAGA World Tour — 年底收官场</div>
+    <div class="info-venue">亚洲各城市</div>
+  </div>
+  <div class="meta-wrap"><span class="badge badge-kpop">K-POP</span></div>
+</div>
+
+<div class="note">
+  <strong>⚠️ 特别注意：</strong>韩国国内2026年5~12月的具体演唱会场次，目前官方公布的以BTS首尔高阳场（已完成）+ 釜山场（6月）为主。其余艺人如IVE、aespa、TWICE、ENHYPEN的首尔场正陆续公布，建议提前2~3个月联系 NB Travel 跟进最新信息。
+</div>
+
+<!-- SERVICE -->
+<div class="service">
+  <div class="svc-title">🚗 NB Travel 演唱会一站式服务</div>
+  <div class="svc-sub">票务协助 · 专车接送 · 全程陪同 · 行程定制</div>
+  <div class="svc-grid">
+    <div><div class="svc-item-icon">🎫</div><div class="svc-item-name">票务协助</div><div class="svc-item-desc">Interpark/Weverse/Melon官方渠道引导抢票，识别正版门票，避免黄牛</div></div>
+    <div><div class="svc-item-icon">🚐</div><div class="svc-item-name">专车接送</div><div class="svc-item-desc">酒店→场馆往返接送，散场高峰无需苦等出租车或挤地铁</div></div>
+    <div><div class="svc-item-icon">🗺️</div><div class="svc-item-name">周边行程</div><div class="svc-item-desc">演唱会前后安排美食、购物、景点，让韩国行物超所值</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand"><strong>🇰🇷 NB Travel 奶爸韩游</strong> · 韩国医疗观光 &amp; 演唱会接送</div>
+  <div class="footer-note">来源：Soompi / Interpark / Wikipedia / Trazy · 整理：2026年4月 · 以官方公告为准</div>
+</div>
+
+</body>
+</html>

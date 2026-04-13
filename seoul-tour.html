@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首尔一日游固定线路 | 奶爸韩游 NB Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans SC', -apple-system, sans-serif; background: #f5f6f8; color: #1a1a1a; }
+
+/* ===== 顶部导航 ===== */
+.navbar {
+  background: #fff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 6px rgba(0,0,0,.08);
+  gap: 24px;
+}
+.navbar-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; flex-shrink: 0;
+}
+.brand-logo {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg,#0063CC,#0086F6);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; color: #fff;
+}
+.brand-text .cn { font-size: 15px; font-weight: 700; color: #0086F6; }
+.brand-text .en { font-size: 11px; color: #999; letter-spacing: 1px; }
+.navbar-nav {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin-left: 0;
+}
+.navbar-nav a {
+  color: #555;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .2s;
+}
+.navbar-nav a:hover { color: #0086F6; }
+.navbar-nav a.active { color: #0086F6; font-weight: 600; }
+.navbar-right {
+  margin-left: auto;
+}
+.btn-consult {
+  background: linear-gradient(90deg,#FF6B35,#FF4D4F);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ===== 面包屑 ===== */
+.breadcrumb-bar {
+  background: #fff;
+  padding: 10px 20px;
+  font-size: 12px;
+  color: #999;
+  border-bottom: 1px solid #f0f0f0;
+}
+.breadcrumb-bar a { color: #999; text-decoration: none; }
+.breadcrumb-bar a:hover { color: #0086F6; }
+.breadcrumb-bar span { color: #333; }
+
+/* ===== 主内容区 ===== */
+.main-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ===== 左侧主区 ===== */
+.content-left {}
+
+/* 页面标题 */
+.page-title-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+}
+.page-title-card h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.title-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.tag-blue { background: #E8F4FF; color: #0086F6; }
+.tag-orange { background: #FFF0E8; color: #FF6B35; }
+.tag-green { background: #E8F7EC; color: #1AAD19; }
+.tag-gray { background: #F5F5F5; color: #666; }
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #666;
+}
+.rating-score {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FF9500;
+}
+.stars { color: #FF9500; letter-spacing: 1px; }
+.review-count { color: #999; }
+.sold-count { color: #FF4D4F; font-weight: 500; }
+
+/* 线路标签页 */
+.route-tabs-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+.tabs-header {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+}
+.route-tab {
+  flex: 1;
+  padding: 14px 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+  text-decoration: none;
+  display: block;
+}
+.route-tab:hover { color: #0086F6; background: #f8f9ff; }
+.route-tab.active {
+  color: #0086F6;
+  border-bottom-color: #0086F6;
+  font-weight: 700;
+}
+.tab-badge {
+  display: inline-block;
+  background: #FF4D4F;
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 8px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* ===== 路线卡片 ===== */
+.route-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+}
+
+.route-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.route-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+.icon-a { background: linear-gradient(135deg, #0086F6, #0050D0); }
+.icon-b { background: linear-gradient(135deg, #36B37E, #0F7A4A); }
+.icon-c { background: linear-gradient(135deg, #FF9500, #C75C00); }
+
+.route-section-header-text h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+.route-section-header-text p {
+  font-size: 12px;
+  color: #999;
+}
+
+/* 路线流程条 */
+.route-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  background: #f8f9fc;
+  border-radius: 8px;
+}
+.flow-stop {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.flow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.dot-a { background: #0086F6; }
+.dot-b { background: #36B37E; }
+.dot-c { background: #FF9500; }
+.flow-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+.flow-arrow {
+  color: #ccc;
+  font-size: 12px;
+  margin: 0 2px;
+}
+
+/* 景点图片网格 */
+.spots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.spot-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  transition: box-shadow .2s, transform .2s;
+  cursor: pointer;
+}
+.spot-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  transform: translateY(-2px);
+}
+.spot-img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+}
+.spot-info {
+  padding: 10px;
+}
+.spot-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+.spot-name-kr {
+  font-size: 10px;
+  color: #bbb;
+  margin-bottom: 5px;
+}
+.spot-desc {
+  font-size: 11px;
+  color: #888;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.spot-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+.tag-spot-a { background: #EAF3FF; color: #0086F6; }
+.tag-spot-b { background: #E8F7EC; color: #1AAD19; }
+.tag-spot-c { background: #FFF4E6; color: #FF9500; }
+
+/* 包含服务 */
+.includes-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  background: #f8fff9;
+  border-radius: 8px;
+  border: 1px solid #e8f5e9;
+}
+.include-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #333;
+}
+.include-icon { font-size: 14px; }
+.include-label { color: #1AAD19; font-weight: 600; }
+
+/* ===== 右侧预订栏 ===== */
+.sidebar {}
+
+.price-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.10);
+  position: sticky;
+  top: 72px;
+}
+.price-from {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+}
+.price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.price-currency {
+  font-size: 16px;
+  color: #FF4D4F;
+  font-weight: 700;
+}
+.price-number {
+  font-size: 32px;
+  font-weight: 900;
+  color: #FF4D4F;
+  line-height: 1;
+}
+.price-unit {
+  font-size: 13px;
+  color: #999;
+}
+.price-note {
+  font-size: 11px;
+  color: #FF9500;
+  margin-bottom: 14px;
+}
+.price-divider {
+  border: none;
+  border-top: 1px solid #f5f5f5;
+  margin: 12px 0;
+}
+
+/* 路线选择 */
+.route-selector {
+  margin-bottom: 14px;
+}
+.route-selector label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.route-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.route-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.route-option:hover { border-color: #0086F6; background: #f0f8ff; }
+.route-option.selected { border-color: #0086F6; background: #EAF3FF; }
+.route-option-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.route-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.route-option-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.route-option-sub {
+  font-size: 11px;
+  color: #999;
+}
+.route-option-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FF4D4F;
+}
+
+/* 预订按钮 */
+.btn-book-now {
+  display: block;
+  width: 100%;
+  background: linear-gradient(90deg, #FF6B35, #FF4D4F);
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: opacity .2s;
+}
+.btn-book-now:hover { opacity: .9; }
+
+.btn-consult-now {
+  display: block;
+  width: 100%;
+  background: #fff;
+  color: #0086F6;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid #0086F6;
+  transition: all .2s;
+}
+.btn-consult-now:hover { background: #EAF3FF; }
+
+/* 保障提示 */
+.guarantee-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #f5f5f5;
+}
+.guarantee-item {
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+}
+.guarantee-icon { font-size: 18px; display: block; margin-bottom: 3px; }
+
+/* 须知卡片 */
+.notice-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+}
+.notice-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+.notice-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 7px;
+  line-height: 1.5;
+}
+.notice-dot {
+  width: 4px;
+  height: 4px;
+  background: #ccc;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* ===== 底栏 CTA ===== */
+.bottom-cta {
+  background: linear-gradient(90deg, #0063CC, #0086F6);
+  padding: 28px 20px;
+  text-align: center;
+  color: #fff;
+}
+.bottom-cta h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.bottom-cta p {
+  font-size: 13px;
+  opacity: .8;
+  margin-bottom: 16px;
+}
+.btn-bottom {
+  display: inline-block;
+  background: #FF6B35;
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+footer {
+  background: #1a1f2e;
+  padding: 28px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255,255,255,.4);
+  font-size: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-nav { display: flex; gap: 20px; list-style: none; }
+.footer-nav a { color: rgba(255,255,255,.5); text-decoration: none; font-size: 13px; transition: color .2s; }
+.footer-nav a:hover { color: #fff; }
+.footer-brand { font-size: 14px; font-weight: 700; color: rgba(255,255,255,.8); }
+footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .main-container { grid-template-columns: 1fr; padding: 12px 12px 32px; }
+  .navbar-nav { display: none; }
+  .spots-grid { grid-template-columns: repeat(2, 1fr); }
+  .price-card { position: static; }
+  .sidebar { order: -1; }
+}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <div class="brand-logo">奶</div>
+    <div class="brand-text">
+      <div class="cn">奶爸韩游</div>
+      <div class="en">NB Travel Korea</div>
+    </div>
+  </a>
+  <ul class="navbar-nav">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="medical.html">医疗观光</a></li>
+    <li><a href="tour.html">定制包车</a></li>
+    <li><a href="seoul-tour.html" class="active">首尔一日游</a></li>
+    <li><a href="#">演唱会票务</a></li>
+  </ul>
+  <div class="navbar-right">
+    <a href="#booking" class="btn-consult">📞 立即咨询</a>
+  </div>
+</nav>
+
+<!-- 面包屑 -->
+<div class="breadcrumb-bar">
+  <a href="index.html">首页</a> &gt;
+  <a href="tour.html">定制包车游</a> &gt;
+  <span>首尔一日游固定线路</span>
+</div>
+
+<!-- 主内容 -->
+<div class="main-container">
+
+  <!-- 左侧 -->
+  <div class="content-left">
+
+    <!-- 标题卡 -->
+    <div class="page-title-card">
+      <h1>🇰🇷 首尔一日游固定线路 · 三条主题路线任选</h1>
+      <div class="title-tags">
+        <span class="tag tag-blue">中文导游</span>
+        <span class="tag tag-orange">含接送</span>
+        <span class="tag tag-green">即时确认</span>
+        <span class="tag tag-gray">小团出行</span>
+        <span class="tag tag-gray">2025年热销</span>
+      </div>
+      <div class="rating-row">
+        <span class="rating-score">4.9</span>
+        <span class="stars">★★★★★</span>
+        <span class="review-count">328条评价</span>
+        <span style="color:#e8e8e8">|</span>
+        <span class="sold-count">🔥 已有 1,200+ 人出行</span>
+      </div>
+    </div>
+
+    <!-- 线路标签页 -->
+    <div class="route-tabs-card">
+      <div class="tabs-header">
+        <a class="route-tab active" href="#route-a">A线 · 古韵首尔<span class="tab-badge">热门</span></a>
+        <a class="route-tab" href="#route-b">B线 · 摩登首尔</a>
+        <a class="route-tab" href="#route-c">C线 · 近郊小镇</a>
+      </div>
+    </div>
+
+    <!-- ===== A线 ===== -->
+    <div class="route-section" id="route-a">
+      <div class="route-section-header">
+        <div class="route-icon icon-a">A</div>
+        <div class="route-section-header-text">
+          <h2>古韵首尔 · 王朝历史文化游</h2>
+          <p>景福宫 → 青瓦台 → 北村韩屋村 → 仁寺洞 → 圣水洞 → 南山公园</p>
+        </div>
+      </div>
+
+      <!-- 路线流程 -->
+      <div class="route-flow">
+        <div class="flow-stop"><div class="flow-dot dot-a"></div><div class="flow-name">景福宫</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-a"></div><div class="flow-name">青瓦台</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-a"></div><div class="flow-name">北村韩屋村</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-a"></div><div class="flow-name">仁寺洞</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-a"></div><div class="flow-name">圣水洞</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-a"></div><div class="flow-name">南山公园</div></div>
+      </div>
+
+      <!-- 景点 -->
+      <div class="spots-grid">
+        <div class="spot-card">
+          <img class="spot-img" src="spot_gyeongbok.jpg" alt="景福宫">
+          <div class="spot-info">
+            <div class="spot-name">景福宫</div>
+            <div class="spot-name-kr">경복궁</div>
+            <p class="spot-desc">朝鲜王朝最宏伟的正宫，可租借韩服体验宫廷风情</p>
+            <span class="spot-tag tag-spot-a">历史古迹</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_cheong.jpg" alt="青瓦台">
+          <div class="spot-info">
+            <div class="spot-name">青瓦台</div>
+            <div class="spot-name-kr">청와대</div>
+            <p class="spot-desc">韩国前总统官邸，2022年向公众开放，蓝色琉璃瓦绝美</p>
+            <span class="spot-tag tag-spot-a">文化地标</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_bukchon.jpg" alt="北村韩屋村">
+          <div class="spot-info">
+            <div class="spot-name">北村韩屋村</div>
+            <div class="spot-name-kr">북촌한옥마을</div>
+            <p class="spot-desc">保存完好的传统韩屋聚落，韩剧经典取景地</p>
+            <span class="spot-tag tag-spot-a">传统街区</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_insadong.jpg" alt="仁寺洞">
+          <div class="spot-info">
+            <div class="spot-name">仁寺洞</div>
+            <div class="spot-name-kr">인사동</div>
+            <p class="spot-desc">传统文化街，云集画廊、古董店、工艺品，品茶购物圣地</p>
+            <span class="spot-tag tag-spot-a">文化购物</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_seongsu.jpg" alt="圣水洞">
+          <div class="spot-info">
+            <div class="spot-name">圣水洞</div>
+            <div class="spot-name-kr">성수동</div>
+            <p class="spot-desc">首尔版Brooklyn，旧工厂改建咖啡馆，网红打卡天堂</p>
+            <span class="spot-tag tag-spot-a">潮流打卡</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_namsan.jpg" alt="南山公园">
+          <div class="spot-info">
+            <div class="spot-name">南山公园·N首尔塔</div>
+            <div class="spot-name-kr">남산공원</div>
+            <p class="spot-desc">首尔制高点，俯瞰全市夜景，同心锁墙，浪漫收尾</p>
+            <span class="spot-tag tag-spot-a">城市观景</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 包含项 -->
+      <div class="includes-row">
+        <div class="include-item"><span class="include-icon">✅</span><span class="include-label">含</span> 中文导游全程</div>
+        <div class="include-item"><span class="include-icon">✅</span><span class="include-label">含</span> 舒适空调包车</div>
+        <div class="include-item"><span class="include-icon">📌</span><span style="color:#FF9500;font-weight:600">不含</span> 景福宫门票约₩3,000</div>
+      </div>
+    </div>
+
+    <!-- ===== B线 ===== -->
+    <div class="route-section" id="route-b">
+      <div class="route-section-header">
+        <div class="route-icon icon-b">B</div>
+        <div class="route-section-header-text">
+          <h2>摩登首尔 · 时尚都市夜游</h2>
+          <p>星空图书馆 → 奉恩寺 → 新沙洞林荫道 → 现代百货 → 汉江游轮</p>
+        </div>
+      </div>
+
+      <div class="route-flow">
+        <div class="flow-stop"><div class="flow-dot dot-b"></div><div class="flow-name">星空图书馆</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-b"></div><div class="flow-name">奉恩寺</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-b"></div><div class="flow-name">新沙洞林荫道</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-b"></div><div class="flow-name">现代百货</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-b"></div><div class="flow-name">汉江游轮</div></div>
+      </div>
+
+      <div class="spots-grid">
+        <div class="spot-card">
+          <img class="spot-img" src="spot_coex.jpg" alt="星空图书馆">
+          <div class="spot-info">
+            <div class="spot-name">别마당 星空图书馆</div>
+            <div class="spot-name-kr">COEX 별마당도서관</div>
+            <p class="spot-desc">13米高书架直冲天花板，首尔最上镜的网红地标，免费入场</p>
+            <span class="spot-tag tag-spot-b">网红地标</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_bongeun.jpg" alt="奉恩寺">
+          <div class="spot-info">
+            <div class="spot-name">奉恩寺</div>
+            <div class="spot-name-kr">봉은사</div>
+            <p class="spot-desc">千年古刹静卧江南都市中，高楼与古寺反差极具禅意</p>
+            <span class="spot-tag tag-spot-b">都市古迹</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_garosu.jpg" alt="新沙洞林荫道">
+          <div class="spot-info">
+            <div class="spot-name">新沙洞林荫道</div>
+            <div class="spot-name-kr">가로수길</div>
+            <p class="spot-desc">银杏树掩映的时尚街道，设计师品牌与精品咖啡汇聚</p>
+            <span class="spot-tag tag-spot-b">时尚购物</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_hyundai.jpg" alt="现代百货">
+          <div class="spot-info">
+            <div class="spot-name">现代百货 THE HYUNDAI</div>
+            <div class="spot-name-kr">더현대 서울</div>
+            <p class="spot-desc">韩国最美购物中心，室内植物园设计，俯瞰汉江</p>
+            <span class="spot-tag tag-spot-b">顶级商场</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_hanriver.jpg" alt="汉江游轮">
+          <div class="spot-info">
+            <div class="spot-name">汉江游轮</div>
+            <div class="spot-name-kr">한강 유람선</div>
+            <p class="spot-desc">乘船游览汉江，夜幕灯光璀璨，拍摄首尔夜景最佳角度</p>
+            <span class="spot-tag tag-spot-b">夜游首选</span>
+          </div>
+        </div>
+        <div class="spot-card" style="background:linear-gradient(135deg,#e8f7ec,#c8f0d8);display:flex;align-items:center;justify-content:center;min-height:200px;">
+          <div style="text-align:center;padding:20px;">
+            <div style="font-size:36px;margin-bottom:8px;">🌙</div>
+            <div style="font-size:14px;font-weight:700;color:#1AAD19;margin-bottom:4px;">B线专属亮点</div>
+            <div style="font-size:12px;color:#666;line-height:1.6;">汉江游轮票<br>已含在报价内</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="includes-row">
+        <div class="include-item"><span class="include-icon">✅</span><span class="include-label">含</span> 中文导游全程</div>
+        <div class="include-item"><span class="include-icon">✅</span><span class="include-label">含</span> 汉江游轮船票</div>
+        <div class="include-item"><span class="include-icon">✅</span><span class="include-label">含</span> 舒适空调包车</div>
+      </div>
+    </div>
+
+    <!-- ===== C线 ===== -->
+    <div class="route-section" id="route-c">
+      <div class="route-section-header">
+        <div class="route-icon icon-c">C</div>
+        <div class="route-section-header-text">
+          <h2>近郊小镇 · 童话自然风光游</h2>
+          <p>南怡岛 → 江村铁路自行车 → 小法国村 / 意大利村</p>
+        </div>
+      </div>
+
+      <div class="route-flow">
+        <div class="flow-stop"><div class="flow-dot dot-c"></div><div class="flow-name">首尔出发</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-c"></div><div class="flow-name">南怡岛</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-c"></div><div class="flow-name">江村铁路自行车</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-c"></div><div class="flow-name">小法国村/意大利村</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-stop"><div class="flow-dot dot-c"></div><div class="flow-name">返回首尔</div></div>
+      </div>
+
+      <div class="spots-grid">
+        <div class="spot-card">
+          <img class="spot-img" src="spot_nami.jpg" alt="南怡岛">
+          <div class="spot-info">
+            <div class="spot-name">南怡岛</div>
+            <div class="spot-name-kr">남이섬</div>
+            <p class="spot-desc">《冬季恋歌》取景地，春樱秋杏，浪漫如画，乘渡船5分钟可达</p>
+            <span class="spot-tag tag-spot-c">自然景观</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_railbike.jpg" alt="江村铁路自行车">
+          <div class="spot-info">
+            <div class="spot-name">江村铁路自行车</div>
+            <div class="spot-name-kr">강촌 레일바이크</div>
+            <p class="spot-desc">南怡岛旁加平江村，沿北汉江骑行约8km，终点有小火车接驳返回</p>
+            <span class="spot-tag tag-spot-c">特色体验</span>
+          </div>
+        </div>
+        <div class="spot-card">
+          <img class="spot-img" src="spot_france.jpg" alt="小法国村">
+          <div class="spot-info">
+            <div class="spot-name">小法国村/意大利村</div>
+            <div class="spot-name-kr">쁘띠프랑스</div>
+            <p class="spot-desc">《来自星星的你》取景地，彩色欧式建筑，出片率极高</p>
+            <span class="spot-tag tag-spot-c">童话小镇</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="includes-row">
+        <div class="include-item"><span class="include-icon">✅</span><span class="include-label">含</span> 中文司导全程</div>
+        <div class="include-item"><span class="include-icon">✅</span><span class="include-label">含</span> 全车包场</div>
+        <div class="include-item"><span class="include-icon">📌</span><span style="color:#FF9500;font-weight:600">不含</span> 南怡岛渡船约₩16,000/人</div>
+      </div>
+    </div>
+
+  </div><!-- /content-left -->
+
+  <!-- 右侧预订栏 -->
+  <div class="sidebar">
+    <div class="price-card" id="booking">
+      <div class="price-from">拼团价格，每位起</div>
+      <div class="price-main">
+        <span class="price-currency">₩</span>
+        <span class="price-number">388</span>
+        <span class="price-unit">/人起</span>
+      </div>
+      <div class="price-note">⚠️ 价格单位待确认，请咨询客服</div>
+
+      <!-- 路线选择 -->
+      <div class="route-selector">
+        <label>选择路线</label>
+        <div class="route-options">
+          <div class="route-option selected">
+            <div class="route-option-left">
+              <div class="route-dot" style="background:#0086F6"></div>
+              <div>
+                <div class="route-option-name">A线 · 古韵首尔</div>
+                <div class="route-option-sub">景福宫→青瓦台→南山塔</div>
+              </div>
+            </div>
+            <div class="route-option-price">₩388起</div>
+          </div>
+          <div class="route-option">
+            <div class="route-option-left">
+              <div class="route-dot" style="background:#36B37E"></div>
+              <div>
+                <div class="route-option-name">B线 · 摩登首尔</div>
+                <div class="route-option-sub">COEX→奉恩寺→汉江游轮</div>
+              </div>
+            </div>
+            <div class="route-option-price">₩488起</div>
+          </div>
+          <div class="route-option">
+            <div class="route-option-left">
+              <div class="route-dot" style="background:#FF9500"></div>
+              <div>
+                <div class="route-option-name">C线 · 近郊小镇</div>
+                <div class="route-option-sub">南怡岛→江村铁路→法国村</div>
+              </div>
+            </div>
+            <div class="route-option-price">₩1,500起</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="price-divider">
+      <a href="#booking" class="btn-book-now">📋 立即预订</a>
+      <a href="#booking" class="btn-consult-now">💬 在线咨询</a>
+
+      <div class="guarantee-row">
+        <div class="guarantee-item">
+          <span class="guarantee-icon">🛡️</span>
+          安全保障
+        </div>
+        <div class="guarantee-item">
+          <span class="guarantee-icon">✅</span>
+          即时确认
+        </div>
+        <div class="guarantee-item">
+          <span class="guarantee-icon">🈚</span>
+          中文服务
+        </div>
+      </div>
+    </div>
+
+    <!-- 须知 -->
+    <div class="notice-card">
+      <div class="notice-title">📋 出行须知</div>
+      <div class="notice-item"><div class="notice-dot"></div>集合时间：上午8:00–8:30，具体以确认单为准</div>
+      <div class="notice-item"><div class="notice-dot"></div>团体人数：拼团一般8–15人，包车不限</div>
+      <div class="notice-item"><div class="notice-dot"></div>C线为近郊路线，建议安排整天</div>
+      <div class="notice-item"><div class="notice-dot"></div>门票请自备零钱，现场购买</div>
+      <div class="notice-item"><div class="notice-dot"></div>如遇特殊天气，行程安排可能微调</div>
+    </div>
+  </div>
+
+</div><!-- /main-container -->
+
+<!-- 底部 CTA -->
+<div class="bottom-cta">
+  <h2>选好了？立即预约出发 🚀</h2>
+  <p>告诉我们出行日期和人数，奶爸团队为您安排专属行程</p>
+  <a href="#booking" class="btn-bottom">📋 选择路线预订</a>
+</div>
+
+<footer>
+  <div class="footer-brand">🇰🇷 奶爸韩游 NB Travel</div>
+  <ul class="footer-nav">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="medical.html">医疗观光</a></li>
+    <li><a href="tour.html">定制包车</a></li>
+    <li><a href="seoul-tour.html">首尔一日游</a></li>
+  </ul>
+  <span>© 2025 엔비트래블 NB Travel 奶爸韩游 · 관광사업등록증 제2025-000023호</span>
+</footer>
+
+<script>
+// Tab 切换
+document.querySelectorAll('.route-tab').forEach(tab => {
+  tab.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.route-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// 路线选项点击
+document.querySelectorAll('.route-option').forEach(opt => {
+  opt.addEventListener('click', function() {
+    document.querySelectorAll('.route-option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+// 滚动高亮tab
+const sections = ['route-a', 'route-b', 'route-c'];
+window.addEventListener('scroll', () => {
+  let current = sections[0];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 120) current = id;
+  });
+  document.querySelectorAll('.route-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>
