@@ -6,7 +6,7 @@
 (function() {
   // ===== 配置 =====
   const CONFIG = {
-    apiUrl: 'http://44.241.240.6:3399',
+    apiUrl: 'https://fcc-frog-mines-scored.trycloudflare.com',
     botName: '奶爸小助手',
     botAvatar: '🐼',
     welcomeMessages: {
