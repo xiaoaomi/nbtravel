@@ -6,7 +6,7 @@
 (function() {
   // ===== 配置 =====
   const CONFIG = {
-    apiUrl: 'https://nb-travel-chat.leiao.workers.dev',
+    apiUrl: 'http://44.241.240.6:3399',
     botName: '奶爸小助手',
     botAvatar: '🐼',
     welcomeMessages: {
