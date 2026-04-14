@@ -113,7 +113,7 @@
     style.textContent = `
       #nb-chat-btn {
         position: fixed;
-        bottom: 24px;
+        bottom: 80px;
         left: 20px; right: auto;
         width: 64px;
         height: 64px;
@@ -147,10 +147,10 @@
       }
       #nb-chat-window {
         position: fixed;
-        bottom: 96px;
+        bottom: 160px;
         left: 20px; right: auto;
         width: 380px;
-        max-height: 520px;
+        max-height: min(520px, calc(100vh - 200px));
         background: #fff;
         border-radius: 16px;
         box-shadow: 0 8px 40px rgba(0,0,0,.18);
@@ -310,8 +310,8 @@
       }
       .nb-quick-btn:hover { background: #0086F6; color: #fff; }
       @media (max-width: 480px) {
-        #nb-chat-window { width: calc(100vw - 24px); left: 12px; right: auto; bottom: 90px; }
-        #nb-chat-btn { bottom: 100px; right: 16px; }
+        #nb-chat-window { width: calc(100vw - 24px); left: 12px; right: auto; bottom: 152px; }
+        #nb-chat-btn { bottom: 80px; left: 16px; right: auto; }
       }
     `;
     document.head.appendChild(style);
