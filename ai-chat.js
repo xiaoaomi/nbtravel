@@ -113,10 +113,10 @@
     style.textContent = `
       #nb-chat-btn {
         position: fixed;
-        bottom: 90px;
-        right: 20px;
-        width: 56px;
-        height: 56px;
+        bottom: 24px;
+        left: 20px; right: auto;
+        width: 64px;
+        height: 64px;
         background: linear-gradient(135deg, #0086F6, #0063CC);
         border-radius: 50%;
         box-shadow: 0 4px 16px rgba(0,134,246,.45);
@@ -147,9 +147,9 @@
       }
       #nb-chat-window {
         position: fixed;
-        bottom: 160px;
-        right: 20px;
-        width: 360px;
+        bottom: 96px;
+        left: 20px; right: auto;
+        width: 380px;
         max-height: 520px;
         background: #fff;
         border-radius: 16px;
@@ -310,7 +310,7 @@
       }
       .nb-quick-btn:hover { background: #0086F6; color: #fff; }
       @media (max-width: 480px) {
-        #nb-chat-window { width: calc(100vw - 24px); right: 12px; bottom: 150px; }
+        #nb-chat-window { width: calc(100vw - 24px); left: 12px; right: auto; bottom: 90px; }
         #nb-chat-btn { bottom: 100px; right: 16px; }
       }
     `;
