@@ -11,7 +11,7 @@ body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a;
 
 /* NAVBAR */
 .navbar {
-  background:#fff; height:60px;
+  background:#1a3a6b; height:60px;
   display:flex; align-items:center; padding:0 40px; gap:24px;
   position:sticky; top:0; z-index:100;
   box-shadow:0 1px 6px rgba(0,0,0,.08);
@@ -23,11 +23,11 @@ body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a;
   border-radius:8px; display:flex; align-items:center; justify-content:center;
   font-size:15px; font-weight:900; color:#fff;
 }
-.brand-text .cn { font-size:15px; font-weight:700; color:#0086F6; }
+.brand-text .cn { font-size:15px; font-weight:700; color:#fff; }
 .brand-text .en { font-size:11px; color:#999; letter-spacing:1px; }
 .navbar-nav { display:flex; gap:20px; list-style:none; }
-.navbar-nav a { font-size:14px; color:#555; text-decoration:none; transition:color .2s; }
-.navbar-nav a:hover { color:#0086F6; }
+.navbar-nav a { font-size:14px; color:#cde; text-decoration:none; transition:color .2s; }
+.navbar-nav a:hover { color:#fff; }
 .navbar-nav a.active { color:#0086F6; font-weight:600; }
 .navbar-right { margin-left:auto; }
 .navbar-cta {
@@ -74,7 +74,7 @@ body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a;
   font-size:20px; font-weight:800; color:#1a1a1a;
   padding:28px 0 16px; border-bottom:2px solid #e8e8e8; margin-bottom:20px;
 }
-.sec-title span { color:#0086F6; }
+.sec-title span { color:#fff; }
 
 /* 车型卡片 */
 .car-list { display:flex; flex-direction:column; gap:12px; }
@@ -91,7 +91,7 @@ body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a;
 .car-name { font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:4px; }
 .car-seats { font-size:12px; color:#888; }
 .car-price-area { text-align:right; flex-shrink:0; }
-.car-price { font-size:22px; font-weight:900; color:#0086F6; }
+.car-price { font-size:22px; font-weight:900; color:#fff; }
 .car-price-unit { font-size:12px; color:#888; }
 .car-service { font-size:11px; color:#aaa; margin-top:2px; }
 .car-extra { font-size:11px; color:#FF6B35; margin-top:2px; }
@@ -120,7 +120,7 @@ body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a;
   box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
 .transfer-dest { font-size:14px; font-weight:600; color:#333; }
-.transfer-price { font-size:20px; font-weight:900; color:#0086F6; }
+.transfer-price { font-size:20px; font-weight:900; color:#fff; }
 .transfer-price-unit { font-size:11px; color:#888; font-weight:400; }
 
 /* 注意事项 */
@@ -180,13 +180,7 @@ footer {
 
 <!-- 导航 -->
 <nav class="navbar">
-  <a href="index.html" class="navbar-brand">
-    <div class="brand-logo">奶</div>
-    <div class="brand-text">
-      <div class="cn">奶爸韩游</div>
-      <div class="en">NB Travel Korea</div>
-    </div>
-  </a>
+  <a href="index.html" class="navbar-brand"><img src="logo-nav.jpg" style="height:48px;object-fit:contain;"></a>
   <ul class="navbar-nav">
     <li><a href="index.html">首页</a></li>
     <li><a href="medical.html">医疗观光</a></li>
@@ -385,5 +379,18 @@ function switchTab(tab, btn) {
 </script>
 
 <script src="chat.js"></script>
+
+<script>
+// 确保从子页面按返回键回到首页而不是退出网站
+(function(){
+  // 在历史栈中推入首页，这样返回时会回到首页
+  if (window.location.href.indexOf('index.html') === -1 && window.location.pathname !== '/' && window.location.pathname !== '') {
+    history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', function() {
+      window.location.href = 'index.html';
+    });
+  }
+})();
+</script>
 </body>
 </html>

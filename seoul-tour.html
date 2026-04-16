@@ -11,7 +11,7 @@ body { font-family: 'Noto Sans SC', -apple-system, sans-serif; background: #f5f6
 
 /* ===== 顶部导航 ===== */
 .navbar {
-  background: #fff;
+  background:#1a3a6b;
   height: 60px;
   display: flex;
   align-items: center;
@@ -583,13 +583,7 @@ footer a { color: rgba(255,255,255,.5); text-decoration: none; }
 
 <!-- 导航 -->
 <nav class="navbar">
-  <a href="index.html" class="navbar-brand">
-    <div class="brand-logo">奶</div>
-    <div class="brand-text">
-      <div class="cn">奶爸韩游</div>
-      <div class="en">NB Travel Korea</div>
-    </div>
-  </a>
+  <a href="index.html" class="navbar-brand"><img src="logo-nav.jpg" style="height:48px;object-fit:contain;"></a>
   <ul class="navbar-nav">
     <li><a href="index.html">首页</a></li>
     <li><a href="medical.html">医疗观光</a></li>
@@ -1015,5 +1009,18 @@ window.addEventListener('scroll', () => {
 });
 </script>
 <script src="chat.js"></script>
+
+<script>
+// 确保从子页面按返回键回到首页而不是退出网站
+(function(){
+  // 在历史栈中推入首页，这样返回时会回到首页
+  if (window.location.href.indexOf('index.html') === -1 && window.location.pathname !== '/' && window.location.pathname !== '') {
+    history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', function() {
+      window.location.href = 'index.html';
+    });
+  }
+})();
+</script>
 </body>
 </html>

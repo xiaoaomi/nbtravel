@@ -261,7 +261,7 @@
 <!-- 顶部导航 -->
 <nav class="top-nav">
     <div class="container">
-        <a href="index.html" class="logo">NB <span>Travel</span></a>
+        <a href="index.html" class="logo"><img src="logo-nav.jpg" style="height:48px;object-fit:contain;vertical-align:middle;"></a>
         <div class="nav-links">
             <a href="index.html">首页</a>
             <a href="medical.html">医疗</a>
@@ -514,5 +514,18 @@ function filterCity(c) {
 </script>
 
 <script src="chat.js"></script>
+
+<script>
+// 确保从子页面按返回键回到首页而不是退出网站
+(function(){
+  // 在历史栈中推入首页，这样返回时会回到首页
+  if (window.location.href.indexOf('index.html') === -1 && window.location.pathname !== '/' && window.location.pathname !== '') {
+    history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', function() {
+      window.location.href = 'index.html';
+    });
+  }
+})();
+</script>
 </body>
 </html>

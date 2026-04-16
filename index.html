@@ -8,11 +8,11 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; background:#f5f6f8; }
+body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; background:linear-gradient(180deg, #f0f4fb 0%, #e8f0fa 15%, #f5eef0 45%, #fce8ec 70%, #fff0f2 85%, #fff5f6 100%); background-attachment:fixed; min-height:100vh; }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background:#fff;
+  background:#1a3a6b;
   height:56px;
   display:flex;
   align-items:center;
@@ -30,11 +30,11 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
   display:flex; align-items:center; justify-content:center;
   font-size:16px; font-weight:900; color:#fff;
 }
-.brand-text .cn { font-size:15px; font-weight:700; color:#0086F6; }
+.brand-text .cn { font-size:15px; font-weight:700; color:#fff; }
 .brand-text .en { font-size:11px; color:#999; letter-spacing:1px; }
 .navbar-nav { display:flex; gap:20px; list-style:none; }
-.navbar-nav a { font-size:14px; color:#555; text-decoration:none; transition:color .2s; }
-.navbar-nav a:hover { color:#0086F6; }
+.navbar-nav a { font-size:14px; color:#cde; text-decoration:none; transition:color .2s; }
+.navbar-nav a:hover { color:#fff; }
 .navbar-right { margin-left:auto; display:flex; align-items:center; gap:12px; }
 .btn-consult {
   background:linear-gradient(90deg,#FF6B35,#FF4D4F);
@@ -143,7 +143,7 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
 
 /* ===== 热门路线快入口 ===== */
 .quick-entry {
-  background:#fff;
+  background:rgba(255,255,255,0.92);
   padding:20px 32px;
   display:flex; gap:0;
   border-bottom:1px solid #f0f0f0;
@@ -186,7 +186,7 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
   margin-bottom:16px;
 }
 .section-head h2 { font-size:18px; font-weight:700; color:#1a1a1a; }
-.section-head h2 span { color:#0086F6; }
+.section-head h2 span { color:#fff; }
 .section-more {
   font-size:13px; color:#0086F6; text-decoration:none;
   display:flex; align-items:center; gap:3px;
@@ -201,7 +201,7 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
   margin-bottom:32px;
 }
 .service-card {
-  background:#fff; border-radius:12px;
+  background:rgba(255,255,255,0.92); border-radius:12px;
   overflow:hidden; text-decoration:none;
   box-shadow:0 1px 6px rgba(0,0,0,.06);
   transition:box-shadow .2s, transform .2s;
@@ -248,7 +248,7 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
 
 /* ===== 数据统计条 ===== */
 .stats-bar {
-  background:#fff; border-radius:12px;
+  background:rgba(255,255,255,0.52); border-radius:12px;
   padding:20px 32px;
   display:grid; grid-template-columns:repeat(4,1fr);
   gap:0; margin-bottom:32px;
@@ -285,7 +285,7 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
   font-size:11px; font-weight:600;
 }
 .rtag-hot { background:#FFF0F0; color:#FF4D4F; }
-.rtag-blue { background:#EAF3FF; color:#0086F6; }
+.rtag-blue { background:#EAF3FF; color:#fff; }
 .rtag-green { background:#E8F7EC; color:#1AAD19; }
 .route-title { font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:5px; }
 .route-desc { font-size:12px; color:#888; line-height:1.6; margin-bottom:10px;
@@ -320,7 +320,7 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
 
 /* ===== 服务流程 ===== */
 .process-card {
-  background:#fff; border-radius:12px;
+  background:rgba(255,255,255,0.88); border-radius:12px;
   padding:24px 28px; margin-bottom:32px;
   box-shadow:0 1px 6px rgba(0,0,0,.06);
 }
@@ -361,7 +361,7 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
   gap:14px; margin-bottom:32px;
 }
 .review-card {
-  background:#fff; border-radius:12px;
+  background:rgba(255,255,255,0.90); border-radius:12px;
   padding:16px; box-shadow:0 1px 6px rgba(0,0,0,.06);
 }
 .review-stars { color:#FF9500; font-size:13px; margin-bottom:8px; }
@@ -403,7 +403,7 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
 
 /* ===== 底部CTA ===== */
 .bottom-cta {
-  background:#fff; border-radius:12px;
+  background:rgba(255,255,255,0.90); border-radius:12px;
   padding:28px 32px;
   display:flex; align-items:center;
   justify-content:space-between; gap:24px;
@@ -417,15 +417,22 @@ body { font-family:'Noto Sans SC',-apple-system,sans-serif; color:#1a1a1a; backg
   background:linear-gradient(90deg,#FF6B35,#FF4D4F);
   color:#fff; padding:12px 24px;
   border-radius:8px; font-size:14px; font-weight:700;
-  text-decoration:none;
+  text-decoration:none; display:inline-block;
+  min-width:160px; text-align:center; box-sizing:border-box;
 }
 .btn-cta-outline {
-  border:1.5px solid #0086F6; color:#0086F6;
+  border:none; color:#fff;
   padding:12px 24px; border-radius:8px;
-  font-size:14px; font-weight:600;
-  text-decoration:none; background:#fff;
+  font-size:14px; font-weight:700;
+  text-decoration:none;
+  background:linear-gradient(90deg,#07C160,#05a050);
+  display:inline-block; min-width:160px;
+  text-align:center; box-sizing:border-box;
 }
-.btn-cta-outline:hover { background:#EAF3FF; }
+.btn-cta-outline:hover { opacity:.9; background:linear-gradient(90deg,#07C160,#05a050); }
+.bottom-cta-btns > div { display:inline-block; }
+.bottom-cta-btns > div, .bottom-cta-btns > div > a { width:100%; display:block; }
+.bottom-cta-btns { flex-direction:column; align-items:stretch; }
 
 /* ===== FOOTER ===== */
 footer {
@@ -459,32 +466,7 @@ footer {
   margin-left:6px;
 }
 
-/* ===== 浮动按钮 ===== */
-.float-btns {
-  position:fixed; right:20px; bottom:32px;
-  display:flex; flex-direction:column; gap:10px;
-  z-index:200;
-}
-.float-btn {
-  width:48px; height:48px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  font-size:20px; text-decoration:none;
-  box-shadow:0 4px 14px rgba(0,0,0,.2);
-  transition:transform .2s;
-  position:relative;
-}
-.float-btn:hover { transform:scale(1.1); }
-.fb-wechat { background:#07C160; }
-.fb-wa { background:#25D366; }
-.fb-top { background:#0086F6; color:#fff; font-size:16px; font-weight:700; }
-.float-tooltip {
-  position:absolute; right:56px;
-  background:#333; color:#fff;
-  padding:4px 10px; border-radius:4px;
-  font-size:11px; white-space:nowrap;
-  opacity:0; pointer-events:none; transition:opacity .2s;
-}
-.float-btn:hover .float-tooltip { opacity:1; }
+/* ===== 浮动按钮（已移除，AI客服由JS组件负责）===== */
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
@@ -532,11 +514,7 @@ footer {
 <!-- 导航 -->
 <nav class="navbar">
   <a href="index.html" class="navbar-brand">
-    <div class="brand-logo">奶</div>
-    <div class="brand-text">
-      <div class="cn">奶爸韩游</div>
-      <div class="en">NB Travel Korea</div>
-    </div>
+    <img src="logo-nav.jpg" style="height:48px;object-fit:contain;">
   </a>
   <ul class="navbar-nav">
     <li><a href="medical.html">医疗观光</a></li>
@@ -545,9 +523,7 @@ footer {
     <li><a href="concerts.html">演唱会票务</a></li>
     <li><a href="#reviews">客户评价</a></li>
   </ul>
-  <div class="navbar-right">
-    <a href="#contact" class="btn-consult">📞 立即咨询</a>
-  </div>
+  <div class="navbar-right"></div>
 </nav>
 
 <!-- HERO -->
@@ -566,34 +542,7 @@ footer {
   </div>
 </section>
 
-<!-- 快速入口 -->
-<div class="quick-entry">
-  <a class="quick-item" href="medical.html">
-    <div class="quick-icon qi-purple">🏥</div>
-    <div class="quick-label">医疗观光</div>
-    <div class="quick-sub">整形/体检</div>
-  </a>
-  <a class="quick-item" href="tour.html">
-    <div class="quick-icon qi-blue">🚐</div>
-    <div class="quick-label">定制包车·接送机</div>
-    <div class="quick-sub">专属中文司导</div>
-  </a>
-  <a class="quick-item" href="seoul-tour.html">
-    <div class="quick-icon qi-orange">🗺️</div>
-    <div class="quick-label">首尔一日游</div>
-    <div class="quick-sub">A/B/C线路</div>
-  </a>
-  <a class="quick-item" href="concerts.html">
-    <div class="quick-icon qi-pink">🎤</div>
-    <div class="quick-label">演唱会·票务</div>
-    <div class="quick-sub">专车+代购</div>
-  </a>
-  <a class="quick-item" href="#contact">
-    <div class="quick-icon qi-green">📞</div>
-    <div class="quick-label">在线咨询</div>
-    <div class="quick-sub">24h响应</div>
-  </a>
-</div>
+
 
 <!-- 主内容 -->
 <div class="main-container">
@@ -825,31 +774,39 @@ footer {
       <p>告诉我们您的需求，我们在24小时内为您出具专属方案</p>
     </div>
     <div class="bottom-cta-btns">
-      <a href="#" class="btn-cta-primary">💬 微信咨询（即将开放）</a>
-      <a href="#" class="btn-cta-outline">📞 电话联系（即将开放）</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('nb-chat-btn').click()" class="btn-cta-primary" style="width:100%;display:block;box-sizing:border-box;">💬 在线咨询</a>
+      <div style="position:relative;width:100%;">
+        <a href="javascript:void(0)" id="human-svc-toggle" class="btn-cta-outline" style="width:100%;display:block;box-sizing:border-box;">🎧 人工客服 ▾</a>
+        <div id="human-svc-popup" style="display:none;position:absolute;bottom:56px;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.15);padding:10px;min-width:190px;z-index:999;">
+          <a href="weixin://" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:#1a1a1a;font-size:14px;font-weight:600;">
+            <span style="font-size:22px;">💬</span> 微信客服
+          </a>
+          <a href="https://line.me/" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:#1a1a1a;font-size:14px;font-weight:600;">
+            <span style="font-size:22px;">🟢</span> LINE 客服
+          </a>
+          <a href="https://wa.me/" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:#1a1a1a;font-size:14px;font-weight:600;">
+            <span style="font-size:22px;">📱</span> WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
+    <script>
+    (function(){
+      var btn = document.getElementById("human-svc-toggle");
+      var popup = document.getElementById("human-svc-popup");
+      if(btn && popup){
+        btn.addEventListener("click", function(e){ e.stopPropagation(); popup.style.display = popup.style.display==="none" ? "block" : "none"; });
+        document.addEventListener("click", function(){ popup.style.display="none"; });
+      }
+    })();
+    </script>
   </div>
 
 </div>
 
 <!-- Footer -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="name">奶爸韩游 NB Travel</div>
-      <div class="sub">엔비트래블 · 韩国华语旅游管家</div>
-      <div class="desc">专注华语圈旅客的韩国一站式服务，医疗观光、定制包车、演唱会全程管家，十年在韩深耕，让您安心出行。</div>
-    </div>
-    <div class="footer-col">
-      <h4>服务项目</h4>
-      <ul>
-        <li><a href="medical.html">医疗观光</a></li>
-        <li><a href="tour.html">定制包车游</a></li>
-        <li><a href="seoul-tour.html">首尔一日游</a></li>
-        <li><a href="concerts.html">演唱会票务</a></li>
-        <li><a href="#">机场接送</a></li>
-      </ul>
-    </div>
+  <div class="footer-top" style="grid-template-columns:1fr 1fr;">
     <div class="footer-col">
       <h4>关于我们</h4>
       <ul>
@@ -877,12 +834,7 @@ footer {
   </div>
 </footer>
 
-<!-- 浮动按钮 -->
-<div class="float-btns">
-  <a href="#" class="float-btn fb-wechat">💬<div class="float-tooltip">微信咨询</div></a>
-  <a href="#" class="float-btn fb-wa">📱<div class="float-tooltip">WhatsApp</div></a>
-  <a href="#" class="float-btn fb-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑<div class="float-tooltip">回到顶部</div></a>
-</div>
+
 
 <script>
 /**
@@ -1001,10 +953,10 @@ footer {
     style.textContent = `
       #nb-chat-btn {
         position: fixed;
-        bottom: 80px;
-        left: 20px; right: auto;
-        width: 64px;
-        height: 64px;
+        bottom: 28px;
+        right: 20px; left: auto;
+        width: 52px;
+        height: 52px;
         background: linear-gradient(135deg, #0086F6, #0063CC);
         border-radius: 50%;
         box-shadow: 0 4px 16px rgba(0,134,246,.45);
@@ -1012,7 +964,7 @@ footer {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
+        font-size: 20px;
         z-index: 9998;
         transition: transform .2s, box-shadow .2s;
         border: none;
@@ -1035,75 +987,80 @@ footer {
       }
       #nb-chat-window {
         position: fixed;
-        bottom: 160px;
-        left: 20px; right: auto;
-        width: 380px;
-        max-height: min(520px, calc(100vh - 200px));
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 8px 40px rgba(0,0,0,.18);
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        background: #f0f4fb;
+        border-radius: 0;
+        box-shadow: none;
         display: flex;
         flex-direction: column;
         z-index: 9999;
         overflow: hidden;
-        transform: scale(0.9) translateY(20px);
+        transform: translateY(100%);
         opacity: 0;
-        transition: transform .25s cubic-bezier(.34,1.56,.64,1), opacity .2s;
+        transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .25s;
         pointer-events: none;
       }
       #nb-chat-window.open {
-        transform: scale(1) translateY(0);
+        transform: translateY(0);
         opacity: 1;
         pointer-events: all;
       }
       .nb-chat-header {
-        background: linear-gradient(90deg, #0086F6, #0063CC);
-        padding: 14px 16px;
+        background: linear-gradient(90deg, #003478, #0063CC);
+        padding: 16px 20px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         color: #fff;
         flex-shrink: 0;
+        min-height: 64px;
       }
       .nb-chat-header .nb-avatar {
-        width: 36px; height: 36px;
+        width: 40px; height: 40px;
         background: rgba(255,255,255,.2);
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        font-size: 20px;
+        font-size: 22px;
       }
-      .nb-chat-header .nb-info .nb-name { font-weight: 700; font-size: 15px; }
+      .nb-chat-header .nb-info .nb-name { font-weight: 700; font-size: 16px; }
       .nb-chat-header .nb-info .nb-status { font-size: 12px; opacity: .8; }
       .nb-chat-header .nb-close {
         margin-left: auto;
         background: none; border: none;
-        color: #fff; font-size: 20px;
+        color: #fff; font-size: 24px;
         cursor: pointer; opacity: .8;
-        line-height: 1; padding: 4px;
+        line-height: 1; padding: 6px;
       }
       .nb-chat-header .nb-close:hover { opacity: 1; }
       .nb-chat-messages {
         flex: 1;
         overflow-y: auto;
-        padding: 16px;
+        padding: 20px 16px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        background: #f8f9fb;
+        gap: 14px;
+        background: #f0f4fb;
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
       }
       .nb-msg {
         display: flex;
-        gap: 8px;
+        gap: 10px;
         align-items: flex-end;
-        max-width: 85%;
+        max-width: 75%;
       }
       .nb-msg.bot { align-self: flex-start; }
       .nb-msg.user { align-self: flex-end; flex-direction: row-reverse; }
       .nb-msg .nb-bubble {
-        padding: 10px 14px;
-        border-radius: 14px;
-        font-size: 14px;
-        line-height: 1.6;
+        padding: 12px 16px;
+        border-radius: 16px;
+        font-size: 15px;
+        line-height: 1.7;
         white-space: pre-wrap;
         word-break: break-word;
       }
@@ -1111,7 +1068,7 @@ footer {
         background: #fff;
         color: #1a1a1a;
         border-bottom-left-radius: 4px;
-        box-shadow: 0 1px 4px rgba(0,0,0,.08);
+        box-shadow: 0 1px 6px rgba(0,0,0,.08);
       }
       .nb-msg.user .nb-bubble {
         background: linear-gradient(135deg, #0086F6, #0063CC);
@@ -1119,18 +1076,18 @@ footer {
         border-bottom-right-radius: 4px;
       }
       .nb-msg .nb-bot-icon {
-        width: 28px; height: 28px;
-        background: linear-gradient(135deg, #0086F6, #0063CC);
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, #003478, #0063CC);
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        font-size: 14px;
+        font-size: 16px;
         flex-shrink: 0;
       }
       .nb-typing {
         display: flex; gap: 4px; align-items: center;
-        padding: 10px 14px;
+        padding: 12px 16px;
         background: #fff;
-        border-radius: 14px;
+        border-radius: 16px;
         border-bottom-left-radius: 4px;
         box-shadow: 0 1px 4px rgba(0,0,0,.08);
       }
@@ -1146,32 +1103,40 @@ footer {
         0%,80%,100% { transform: translateY(0); opacity: .4; }
         40% { transform: translateY(-6px); opacity: 1; }
       }
-      .nb-chat-input {
-        padding: 12px;
-        border-top: 1px solid #eee;
-        display: flex;
-        gap: 8px;
-        flex-shrink: 0;
+      .nb-chat-input-wrap {
         background: #fff;
+        border-top: 1px solid #e8ecf0;
+        padding: 12px 16px 20px;
+        flex-shrink: 0;
+      }
+      .nb-chat-input {
+        max-width: 760px;
+        margin: 0 auto;
+        display: flex;
+        gap: 10px;
+        background: transparent;
+        border-top: none;
+        padding: 0;
       }
       .nb-chat-input input {
         flex: 1;
-        border: 1px solid #e0e0e0;
-        border-radius: 20px;
-        padding: 9px 16px;
-        font-size: 14px;
+        border: 1.5px solid #e0e0e0;
+        border-radius: 24px;
+        padding: 12px 20px;
+        font-size: 15px;
         outline: none;
         transition: border-color .2s;
         font-family: inherit;
+        background: #f8f9fb;
       }
-      .nb-chat-input input:focus { border-color: #0086F6; }
+      .nb-chat-input input:focus { border-color: #0086F6; background: #fff; }
       .nb-chat-input button {
-        width: 38px; height: 38px;
+        width: 46px; height: 46px;
         background: linear-gradient(135deg, #0086F6, #0063CC);
         border: none;
         border-radius: 50%;
         color: #fff;
-        font-size: 16px;
+        font-size: 18px;
         cursor: pointer;
         display: flex; align-items: center; justify-content: center;
         flex-shrink: 0;
@@ -1180,17 +1145,19 @@ footer {
       .nb-chat-input button:hover { opacity: .85; }
       .nb-chat-input button:disabled { opacity: .5; cursor: not-allowed; }
       .nb-quick-btns {
-        display: flex; gap: 6px; flex-wrap: wrap;
-        padding: 0 16px 12px;
-        background: #fff;
+        display: flex; gap: 8px; flex-wrap: wrap;
+        max-width: 760px;
+        margin: 0 auto 10px;
+        padding: 0;
+        background: transparent;
       }
       .nb-quick-btn {
-        font-size: 12px;
-        padding: 5px 12px;
+        font-size: 13px;
+        padding: 7px 16px;
         border: 1px solid #0086F6;
         color: #0086F6;
         background: #f0f7ff;
-        border-radius: 14px;
+        border-radius: 20px;
         cursor: pointer;
         white-space: nowrap;
         transition: all .2s;
@@ -1198,8 +1165,9 @@ footer {
       }
       .nb-quick-btn:hover { background: #0086F6; color: #fff; }
       @media (max-width: 480px) {
-        #nb-chat-window { width: calc(100vw - 24px); left: 12px; right: auto; bottom: 152px; }
-        #nb-chat-btn { bottom: 80px; left: 16px; right: auto; }
+        #nb-chat-window { border-radius: 0; }
+        #nb-chat-btn { bottom: 28px; right: 16px; left: auto; }
+        .nb-msg { max-width: 88%; }
       }
     `;
     document.head.appendChild(style);
@@ -1207,7 +1175,7 @@ footer {
     // 按钮
     const btn = document.createElement('button');
     btn.id = 'nb-chat-btn';
-    btn.innerHTML = '🤖<div class="nb-badge" id="nb-badge">1</div>';
+    btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><circle cx="9" cy="10" r="1" fill="#fff" stroke="none"/><circle cx="12" cy="10" r="1" fill="#fff" stroke="none"/><circle cx="15" cy="10" r="1" fill="#fff" stroke="none"/></svg><div class="nb-badge" id="nb-badge">1</div>';
     btn.title = 'AI客服';
     document.body.appendChild(btn);
 
@@ -1224,6 +1192,7 @@ footer {
         <button class="nb-close" id="nb-chat-close">✕</button>
       </div>
       <div class="nb-chat-messages" id="nb-chat-msgs"></div>
+      <div class="nb-chat-input-wrap">
       <div class="nb-quick-btns" id="nb-quick-btns">
         <button class="nb-quick-btn">🎤 演唱会票务</button>
         <button class="nb-quick-btn">🏥 医疗观光</button>
@@ -1233,6 +1202,7 @@ footer {
       <div class="nb-chat-input">
         <input type="text" id="nb-chat-input" placeholder="请输入您的问题..." maxlength="200" />
         <button id="nb-chat-send">➤</button>
+      </div>
       </div>
     `;
     document.body.appendChild(win);
@@ -1260,8 +1230,8 @@ footer {
       isOpen = !isOpen;
       win.classList.toggle('open', isOpen);
       btn.innerHTML = isOpen
-        ? '✕<div class="nb-badge" id="nb-badge" style="display:none">1</div>'
-        : '🤖<div class="nb-badge" id="nb-badge" style="display:none">1</div>';
+        ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><div class="nb-badge" id="nb-badge" style="display:none">1</div>'
+        : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><circle cx="9" cy="10" r="1" fill="#fff" stroke="none"/><circle cx="12" cy="10" r="1" fill="#fff" stroke="none"/><circle cx="15" cy="10" r="1" fill="#fff" stroke="none"/></svg><div class="nb-badge" id="nb-badge" style="display:none">1</div>';
       if (isOpen && !welcomed) {
         welcomed = true;
         setTimeout(() => addMsg('bot', CONFIG.welcomeMessages[currentLang]), 400);
@@ -1354,7 +1324,7 @@ footer {
     setTimeout(() => {
       if (!isOpen) {
         badge.style.display = 'flex';
-        btn.innerHTML = '🤖<div class="nb-badge" id="nb-badge" style="display:flex">1</div>';
+        btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><circle cx="9" cy="10" r="1" fill="#fff" stroke="none"/><circle cx="12" cy="10" r="1" fill="#fff" stroke="none"/><circle cx="15" cy="10" r="1" fill="#fff" stroke="none"/></svg><div class="nb-badge" id="nb-badge" style="display:flex">1</div>';
       }
     }, 3000);
   }

@@ -32,8 +32,8 @@ body {
 /* ── NAV ── */
 .nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(12px);
+  background: #1a3a6b;
+  
   border-bottom: 1px solid var(--gray-200);
   height: 60px;
   display: flex; align-items: center;
@@ -46,9 +46,9 @@ body {
   display: flex; align-items: center; justify-content: center;
   font-size: 14px; font-weight: 800; color: #fff;
 }
-.nav-name { font-size: 15px; font-weight: 700; color: var(--black); }
+.nav-name { font-size: 15px; font-weight: 700; color: #fff; }
 .nav-links { display: flex; gap: 0; margin-left: 16px; }
-.nav-links a {
+.nav-links a { color: rgba(255,255,255,0.85) !important;
   font-size: 14px; color: var(--gray-600); text-decoration: none;
   padding: 0 16px; height: 60px; display: flex; align-items: center;
   border-bottom: 2px solid transparent;
@@ -466,7 +466,7 @@ footer {
 <nav class="nav">
   <a href="index.html" class="nav-brand">
     <div class="nav-logo">奶</div>
-    <span class="nav-name">奶爸韩游 NB Travel</span>
+    <img src="logo-nav.jpg" style="height:48px;object-fit:contain;">
   </a>
   <div class="nav-links">
     <a href="index.html">首页</a>
@@ -1022,5 +1022,18 @@ footer {
 </footer>
 
 <script src="chat.js"></script>
+
+<script>
+// 确保从子页面按返回键回到首页而不是退出网站
+(function(){
+  // 在历史栈中推入首页，这样返回时会回到首页
+  if (window.location.href.indexOf('index.html') === -1 && window.location.pathname !== '/' && window.location.pathname !== '') {
+    history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', function() {
+      window.location.href = 'index.html';
+    });
+  }
+})();
+</script>
 </body>
 </html>
