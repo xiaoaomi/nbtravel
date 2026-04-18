@@ -11,7 +11,7 @@ body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a;
 
 /* NAVBAR */
 .navbar {
-  background:#1a3a6b; height:60px;
+  background:#243978; height:60px;
   display:flex; align-items:center; padding:0 40px; gap:24px;
   position:sticky; top:0; z-index:100;
   box-shadow:0 1px 6px rgba(0,0,0,.08);
@@ -77,21 +77,44 @@ body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a;
 .sec-title span { color:#fff; }
 
 /* 车型卡片 */
-.car-list { display:flex; flex-direction:column; gap:12px; }
+.car-list { display:flex; flex-direction:column; gap:14px; }
 .car-row {
   background:#fff; border-radius:12px;
-  padding:20px 24px;
-  display:flex; align-items:center; gap:20px;
+  padding:0;
+  display:flex; align-items:stretch; gap:0;
   box-shadow:0 1px 4px rgba(0,0,0,.06);
-  transition:box-shadow .2s;
+  transition:box-shadow .2s; overflow:hidden;
 }
-.car-row:hover { box-shadow:0 4px 16px rgba(0,0,0,.1); }
-.car-emoji { font-size:32px; flex-shrink:0; width:48px; text-align:center; }
+.car-row:hover { box-shadow:0 4px 16px rgba(0,0,0,.12); }
+
+/* 左侧彩色类型标签栏 */
+.car-type-bar {
+  width:72px; flex-shrink:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:6px; padding:16px 8px;
+  font-size:10px; font-weight:700; letter-spacing:0.5px;
+  color:#fff; writing-mode:initial;
+}
+.car-type-icon { font-size:22px; line-height:1; }
+.car-type-label { font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; text-align:center; line-height:1.3; }
+
+/* 颜色主题 */
+.type-economy  { background:linear-gradient(160deg,#0EA5E9,#0284C7); }
+.type-comfort  { background:linear-gradient(160deg,#10B981,#059669); }
+.type-luxury   { background:linear-gradient(160deg,#8B5CF6,#6D28D9); }
+.type-business { background:linear-gradient(160deg,#F59E0B,#D97706); }
+.type-coach    { background:linear-gradient(160deg,#EF4444,#DC2626); }
+.type-bus      { background:linear-gradient(160deg,#64748B,#475569); }
+
+.car-content {
+  flex:1; padding:18px 20px;
+  display:flex; align-items:center; gap:16px;
+}
 .car-main { flex:1; }
-.car-name { font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:4px; }
+.car-name { font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:3px; }
 .car-seats { font-size:12px; color:#888; }
 .car-price-area { text-align:right; flex-shrink:0; }
-.car-price { font-size:22px; font-weight:900; color:#fff; }
+.car-price { font-size:21px; font-weight:900; color:#1a1a1a; }
 .car-price-unit { font-size:12px; color:#888; }
 .car-service { font-size:11px; color:#aaa; margin-top:2px; }
 .car-extra { font-size:11px; color:#FF6B35; margin-top:2px; }
@@ -104,6 +127,14 @@ body { font-family:'Noto Sans SC',sans-serif; background:#f5f6f8; color:#1a1a1a;
   display:inline-block; background:#8B5CF6; color:#fff;
   font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; margin-left:6px;
   vertical-align:middle;
+}
+
+@media (max-width:768px) {
+  .car-type-bar { width:58px; padding:12px 6px; }
+  .car-type-icon { font-size:18px; }
+  .car-content { padding:14px 14px; }
+  .car-name { font-size:14px; }
+  .car-price { font-size:18px; }
 }
 
 /* 接送机表格 */
@@ -180,7 +211,7 @@ footer {
 
 <!-- 导航 -->
 <nav class="navbar">
-  <a href="index.html" class="navbar-brand"><img src="logo-nav.jpg" style="height:48px;object-fit:contain;"></a>
+  <a href="index.html" class="navbar-brand"><img src="logo-nav.png" style="height:52px;object-fit:contain;"></a>
   <ul class="navbar-nav">
     <li><a href="index.html">首页</a></li>
     <li><a href="medical.html">医疗观光</a></li>
@@ -213,81 +244,117 @@ footer {
 
   <div class="car-list">
 
+    <!-- 经济舒适 - 蓝色 -->
     <div class="car-row">
-      <div class="car-emoji">🚐</div>
-      <div class="car-main">
-        <div class="car-name">起亚 嘉华 Carnival<span class="badge-hot">主力推荐</span></div>
-        <div class="car-seats">7 - 9 座</div>
+      <div class="car-type-bar type-economy">
+        <div class="car-type-icon">🚐</div>
+        <div class="car-type-label">经济<br>舒适</div>
       </div>
-      <div class="car-price-area">
-        <div class="car-price">135<span class="car-price-unit"> 万₩</span></div>
-        <div class="car-service">服务 9 小时</div>
-        <div class="car-extra">超时 15 万₩/小时</div>
+      <div class="car-content">
+        <div class="car-main">
+          <div class="car-name">起亚 嘉华 Carnival<span class="badge-hot">主力推荐</span></div>
+          <div class="car-seats">7 - 9 座</div>
+        </div>
+        <div class="car-price-area">
+          <div class="car-price">135<span class="car-price-unit"> 万₩</span></div>
+          <div class="car-service">服务 9 小时</div>
+          <div class="car-extra">超时 15 万₩/小时</div>
+        </div>
       </div>
     </div>
 
+    <!-- 舒适升级 - 绿色 -->
     <div class="car-row">
-      <div class="car-emoji">🚌</div>
-      <div class="car-main">
-        <div class="car-name">现代 斯塔利亚 Staria</div>
-        <div class="car-seats">7 - 9 - 11 座</div>
+      <div class="car-type-bar type-comfort">
+        <div class="car-type-icon">🚌</div>
+        <div class="car-type-label">舒适<br>升级</div>
       </div>
-      <div class="car-price-area">
-        <div class="car-price">140<span class="car-price-unit"> 万₩</span></div>
-        <div class="car-service">服务 9 小时</div>
-        <div class="car-extra">超时 18 万₩/小时</div>
+      <div class="car-content">
+        <div class="car-main">
+          <div class="car-name">现代 斯塔利亚 Staria</div>
+          <div class="car-seats">7 - 9 - 11 座</div>
+        </div>
+        <div class="car-price-area">
+          <div class="car-price">140<span class="car-price-unit"> 万₩</span></div>
+          <div class="car-service">服务 9 小时</div>
+          <div class="car-extra">超时 18 万₩/小时</div>
+        </div>
       </div>
     </div>
 
+    <!-- 豪华首选 - 紫色 -->
     <div class="car-row">
-      <div class="car-emoji">👑</div>
-      <div class="car-main">
-        <div class="car-name">丰田 埃尔法<span class="badge-lux">豪华</span></div>
-        <div class="car-seats">6 - 7 座</div>
+      <div class="car-type-bar type-luxury">
+        <div class="car-type-icon">👑</div>
+        <div class="car-type-label">豪华<br>首选</div>
       </div>
-      <div class="car-price-area">
-        <div class="car-price">270<span class="car-price-unit"> 万₩</span></div>
-        <div class="car-service">服务 8 小时</div>
-        <div class="car-extra">超时 35 万₩/小时</div>
+      <div class="car-content">
+        <div class="car-main">
+          <div class="car-name">丰田 埃尔法<span class="badge-lux">豪华</span></div>
+          <div class="car-seats">6 - 7 座</div>
+        </div>
+        <div class="car-price-area">
+          <div class="car-price">270<span class="car-price-unit"> 万₩</span></div>
+          <div class="car-service">服务 8 小时</div>
+          <div class="car-extra">超时 35 万₩/小时</div>
+        </div>
       </div>
     </div>
 
+    <!-- 商务团队 - 金色 -->
     <div class="car-row">
-      <div class="car-emoji">⭐</div>
-      <div class="car-main">
-        <div class="car-name">奔驰商务 17 座<span class="badge-lux">商务</span></div>
-        <div class="car-seats">17 座</div>
+      <div class="car-type-bar type-business">
+        <div class="car-type-icon">⭐</div>
+        <div class="car-type-label">商务<br>团队</div>
       </div>
-      <div class="car-price-area">
-        <div class="car-price">300<span class="car-price-unit"> 万₩</span></div>
-        <div class="car-service">服务 9 小时</div>
-        <div class="car-extra">超时 30 万₩/小时</div>
+      <div class="car-content">
+        <div class="car-main">
+          <div class="car-name">奔驰商务 17 座<span class="badge-lux">商务</span></div>
+          <div class="car-seats">17 座</div>
+        </div>
+        <div class="car-price-area">
+          <div class="car-price">300<span class="car-price-unit"> 万₩</span></div>
+          <div class="car-service">服务 9 小时</div>
+          <div class="car-extra">超时 30 万₩/小时</div>
+        </div>
       </div>
     </div>
 
+    <!-- 豪华大团 - 红色 -->
     <div class="car-row">
-      <div class="car-emoji">🚍</div>
-      <div class="car-main">
-        <div class="car-name">豪华大巴 28 座</div>
-        <div class="car-seats">28 座 · 全航空座椅</div>
+      <div class="car-type-bar type-coach">
+        <div class="car-type-icon">🚍</div>
+        <div class="car-type-label">豪华<br>大团</div>
       </div>
-      <div class="car-price-area">
-        <div class="car-price">450<span class="car-price-unit"> 万₩</span></div>
-        <div class="car-service">服务 9 小时</div>
-        <div class="car-extra">超时 30 万₩/小时</div>
+      <div class="car-content">
+        <div class="car-main">
+          <div class="car-name">豪华大巴 28 座</div>
+          <div class="car-seats">28 座 · 全航空座椅</div>
+        </div>
+        <div class="car-price-area">
+          <div class="car-price">450<span class="car-price-unit"> 万₩</span></div>
+          <div class="car-service">服务 9 小时</div>
+          <div class="car-extra">超时 30 万₩/小时</div>
+        </div>
       </div>
     </div>
 
+    <!-- 标准大巴 - 灰色 -->
     <div class="car-row">
-      <div class="car-emoji">🚌</div>
-      <div class="car-main">
-        <div class="car-name">旅游大巴 45 座</div>
-        <div class="car-seats">45 座</div>
+      <div class="car-type-bar type-bus">
+        <div class="car-type-icon">🚌</div>
+        <div class="car-type-label">标准<br>大巴</div>
       </div>
-      <div class="car-price-area">
-        <div class="car-price">350<span class="car-price-unit"> 万₩</span></div>
-        <div class="car-service">服务 9 小时</div>
-        <div class="car-extra">超时 30 万₩/小时</div>
+      <div class="car-content">
+        <div class="car-main">
+          <div class="car-name">旅游大巴 45 座</div>
+          <div class="car-seats">45 座</div>
+        </div>
+        <div class="car-price-area">
+          <div class="car-price">350<span class="car-price-unit"> 万₩</span></div>
+          <div class="car-service">服务 9 小时</div>
+          <div class="car-extra">超时 30 万₩/小时</div>
+        </div>
       </div>
     </div>
 
