@@ -1,14 +1,9 @@
-/**
- * NB Travel AI 客服组件
- * 自动识别客户语言，默认中文
- * 后期可补充 FAQ 知识库
- */
 (function() {
   // ===== 配置 =====
   const CONFIG = {
     apiUrl: 'https://fcc-frog-mines-scored.trycloudflare.com',
     botName: '奶爸小助手',
-    botAvatar: '🐼',
+    botAvatar: 'logo-avatar.jpg',
     welcomeMessages: {
       zh: '你好！我是奶爸韩游的AI客服，有什么可以帮到你？\n\n我可以帮你了解：\n• 🎤 演唱会票务 & 专车接送\n• 🏥 韩国医疗观光\n• 🚗 首尔定制包车\n• 🗺️ 首尔一日游路线',
       ko: '안녕하세요! 저는 NB Travel AI 상담원입니다. 무엇을 도와드릴까요?\n\n• 🎤 콘서트 티켓 & 전용차\n• 🏥 의료 관광\n• 🚗 맞춤형 전세버스\n• 🗺️ 서울 당일 투어',
@@ -51,7 +46,7 @@
         '首尔|景点|旅游|tour': '我们有多条首尔一日游路线：A线（景福宫·北村）、B线（南山·明洞）、C线（弘大·梨泰院）。您对哪条路线感兴趣？',
         '价格|多少钱|费用|price|얼마': '具体价格根据行程安排而定，请联系我们的顾问获取报价：微信/WhatsApp 24小时在线！',
         '谢谢|감사|thanks|thank you': '不客气！😊 有任何问题随时找我，祝您韩国行愉快！',
-        '联系|contact|微信|wechat|whatsapp': '您可以通过以下方式联系我们：\n💬 微信：nbtravelkorea\n📱 WhatsApp：+82-10-XXXX-XXXX\n我们24小时在线！',
+        '联系|contact|微信|wechat|whatsapp|line|라인': '您可以通过以下方式联系我们：\n🟢 LINE：https://line.me/ti/p/K8RyXEQsfg\n我们24小时在线！',
         '你好|hello|안녕|hi|哈喽|嗨': '你好！😊 我是奶爸韩游的AI客服，有什么可以帮到你的？\n\n我可以解答：演唱会票务、医疗观光、包车、首尔游路线等问题，也可以直接联系顾问：微信 nbtravelkorea'
       },
       ko: {
@@ -112,26 +107,33 @@
   function createWidget() {
     const style = document.createElement('style');
     style.textContent = `
+      /* ===== 浮动按钮 ===== */
       #nb-chat-btn {
         position: fixed;
-        bottom: 80px;
-        left: 20px; right: auto;
-        width: 64px;
-        height: 64px;
-        background: linear-gradient(135deg, #0086F6, #0063CC);
+        bottom: 28px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(135deg, #1e3478, #0063CC);
         border-radius: 50%;
-        box-shadow: 0 4px 16px rgba(0,134,246,.45);
+        box-shadow: 0 4px 16px rgba(30,52,120,.4);
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
         z-index: 9998;
         transition: transform .2s, box-shadow .2s;
         border: none;
         outline: none;
+        overflow: hidden;
+        padding: 0;
       }
-      #nb-chat-btn:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,134,246,.6); }
+      #nb-chat-btn:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(30,52,120,.55); }
+      #nb-chat-btn img.nb-btn-logo {
+        width: 36px; height: 36px;
+        object-fit: contain;
+        border-radius: 50%;
+      }
       #nb-chat-btn .nb-badge {
         position: absolute;
         top: -2px; right: -2px;
@@ -140,83 +142,110 @@
         border-radius: 50%;
         font-size: 11px;
         color: #fff;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         font-weight: 700;
-        display: none;
       }
+
+      /* ===== 满屏聊天窗口 ===== */
       #nb-chat-window {
         position: fixed;
-        bottom: 160px;
-        left: 20px; right: auto;
-        width: 380px;
-        max-height: min(520px, calc(100vh - 200px));
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 8px 40px rgba(0,0,0,.18);
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #f0f4fb;
+        border-radius: 0;
         display: flex;
         flex-direction: column;
         z-index: 9999;
         overflow: hidden;
-        transform: scale(0.9) translateY(20px);
+        transform: translateY(100%);
         opacity: 0;
-        transition: transform .25s cubic-bezier(.34,1.56,.64,1), opacity .2s;
+        transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .25s;
         pointer-events: none;
       }
       #nb-chat-window.open {
-        transform: scale(1) translateY(0);
+        transform: translateY(0);
         opacity: 1;
         pointer-events: all;
       }
+
+      /* ===== Header ===== */
       .nb-chat-header {
-        background: linear-gradient(90deg, #0086F6, #0063CC);
-        padding: 14px 16px;
+        background: #1e3478;
+        height: 56px;
+        min-height: 56px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        padding: 0 20px;
+        gap: 14px;
         color: #fff;
         flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,.18);
       }
-      .nb-chat-header .nb-avatar {
-        width: 36px; height: 36px;
-        background: rgba(255,255,255,.2);
+      .nb-avatar {
+        width: 38px; height: 38px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: rgba(255,255,255,.15);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .nb-avatar img {
+        width: 100%; height: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+      .nb-info { flex: 1; min-width: 0; }
+      .nb-name { font-weight: 700; font-size: 16px; letter-spacing: .3px; }
+      .nb-status { font-size: 12px; opacity: .75; margin-top: 1px; }
+      .nb-close {
+        margin-left: auto;
+        background: rgba(255,255,255,.12);
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        width: 34px; height: 34px;
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        font-size: 20px;
+        transition: background .2s;
+        flex-shrink: 0;
       }
-      .nb-chat-header .nb-info .nb-name { font-weight: 700; font-size: 15px; }
-      .nb-chat-header .nb-info .nb-status { font-size: 12px; opacity: .8; }
-      .nb-chat-header .nb-close {
-        margin-left: auto;
-        background: none; border: none;
-        color: #fff; font-size: 20px;
-        cursor: pointer; opacity: .8;
-        line-height: 1; padding: 4px;
-      }
-      .nb-chat-header .nb-close:hover { opacity: 1; }
+      .nb-close:hover { background: rgba(255,255,255,.25); }
+
+      /* ===== 消息区域 ===== */
       .nb-chat-messages {
         flex: 1;
         overflow-y: auto;
-        padding: 16px;
+        padding: 24px 16px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        background: #f8f9fb;
+        gap: 16px;
+        background: #f0f4fb;
+      }
+      .nb-msgs-inner {
+        max-width: 680px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
       }
       .nb-msg {
         display: flex;
-        gap: 8px;
+        gap: 10px;
         align-items: flex-end;
-        max-width: 85%;
+        max-width: 78%;
       }
       .nb-msg.bot { align-self: flex-start; }
       .nb-msg.user { align-self: flex-end; flex-direction: row-reverse; }
-      .nb-msg .nb-bubble {
-        padding: 10px 14px;
-        border-radius: 14px;
-        font-size: 14px;
-        line-height: 1.6;
+      .nb-bubble {
+        padding: 13px 18px;
+        border-radius: 20px;
+        font-size: 15px;
+        line-height: 1.75;
         white-space: pre-wrap;
         word-break: break-word;
       }
@@ -224,32 +253,39 @@
         background: #fff;
         color: #1a1a1a;
         border-bottom-left-radius: 4px;
-        box-shadow: 0 1px 4px rgba(0,0,0,.08);
+        box-shadow: 0 1px 6px rgba(0,0,0,.07);
       }
       .nb-msg.user .nb-bubble {
-        background: linear-gradient(135deg, #0086F6, #0063CC);
+        background: linear-gradient(135deg, #1e3478, #0063CC);
         color: #fff;
         border-bottom-right-radius: 4px;
+        box-shadow: 0 2px 8px rgba(30,52,120,.3);
       }
-      .nb-msg .nb-bot-icon {
-        width: 28px; height: 28px;
-        background: linear-gradient(135deg, #0086F6, #0063CC);
+      .nb-bot-icon {
+        width: 34px; height: 34px;
         border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 14px;
+        overflow: hidden;
         flex-shrink: 0;
+        background: #fff;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 1px 4px rgba(0,0,0,.1);
+      }
+      .nb-bot-icon img {
+        width: 30px; height: 30px;
+        object-fit: contain;
+        border-radius: 50%;
       }
       .nb-typing {
-        display: flex; gap: 4px; align-items: center;
-        padding: 10px 14px;
+        display: flex; gap: 5px; align-items: center;
+        padding: 14px 18px;
         background: #fff;
-        border-radius: 14px;
+        border-radius: 20px;
         border-bottom-left-radius: 4px;
-        box-shadow: 0 1px 4px rgba(0,0,0,.08);
+        box-shadow: 0 1px 4px rgba(0,0,0,.07);
       }
       .nb-typing span {
         width: 7px; height: 7px;
-        background: #aaa;
+        background: #bbb;
         border-radius: 50%;
         animation: nb-bounce .9s ease-in-out infinite;
       }
@@ -259,68 +295,84 @@
         0%,80%,100% { transform: translateY(0); opacity: .4; }
         40% { transform: translateY(-6px); opacity: 1; }
       }
-      .nb-chat-input {
-        padding: 12px;
-        border-top: 1px solid #eee;
-        display: flex;
-        gap: 8px;
-        flex-shrink: 0;
+
+      /* ===== 输入区域 ===== */
+      .nb-chat-input-wrap {
         background: #fff;
-      }
-      .nb-chat-input input {
-        flex: 1;
-        border: 1px solid #e0e0e0;
-        border-radius: 20px;
-        padding: 9px 16px;
-        font-size: 14px;
-        outline: none;
-        transition: border-color .2s;
-        font-family: inherit;
-      }
-      .nb-chat-input input:focus { border-color: #0086F6; }
-      .nb-chat-input button {
-        width: 38px; height: 38px;
-        background: linear-gradient(135deg, #0086F6, #0063CC);
-        border: none;
-        border-radius: 50%;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
+        border-top: 1px solid #e8ecf2;
+        padding: 14px 16px 24px;
         flex-shrink: 0;
-        transition: opacity .2s;
       }
-      .nb-chat-input button:hover { opacity: .85; }
-      .nb-chat-input button:disabled { opacity: .5; cursor: not-allowed; }
       .nb-quick-btns {
-        display: flex; gap: 6px; flex-wrap: wrap;
-        padding: 0 16px 12px;
-        background: #fff;
+        display: flex; gap: 8px; flex-wrap: wrap;
+        max-width: 680px;
+        margin: 0 auto 12px;
       }
       .nb-quick-btn {
-        font-size: 12px;
-        padding: 5px 12px;
-        border: 1px solid #0086F6;
-        color: #0086F6;
-        background: #f0f7ff;
-        border-radius: 14px;
+        font-size: 13px;
+        padding: 7px 16px;
+        border: 1.5px solid #1e3478;
+        color: #1e3478;
+        background: #f0f3fa;
+        border-radius: 20px;
         cursor: pointer;
         white-space: nowrap;
         transition: all .2s;
         font-family: inherit;
       }
-      .nb-quick-btn:hover { background: #0086F6; color: #fff; }
+      .nb-quick-btn:hover { background: #1e3478; color: #fff; }
+      .nb-chat-input {
+        max-width: 680px;
+        margin: 0 auto;
+        display: flex;
+        gap: 10px;
+      }
+      .nb-chat-input input {
+        flex: 1;
+        border: 1.5px solid #dde3ee;
+        border-radius: 26px;
+        padding: 13px 22px;
+        font-size: 15px;
+        outline: none;
+        transition: border-color .2s, box-shadow .2s;
+        font-family: inherit;
+        background: #f7f9fd;
+        color: #1a1a1a;
+      }
+      .nb-chat-input input:focus {
+        border-color: #1e3478;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(30,52,120,.08);
+      }
+      .nb-chat-input button {
+        width: 48px; height: 48px;
+        background: linear-gradient(135deg, #1e3478, #0063CC);
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+        transition: opacity .2s, transform .15s;
+        box-shadow: 0 3px 10px rgba(30,52,120,.35);
+      }
+      .nb-chat-input button:hover { opacity: .88; transform: scale(1.05); }
+      .nb-chat-input button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
       @media (max-width: 480px) {
-        #nb-chat-window { width: calc(100vw - 24px); left: 12px; right: auto; bottom: 152px; }
-        #nb-chat-btn { bottom: 80px; left: 16px; right: auto; }
+        .nb-chat-messages { padding: 16px 12px; }
+        .nb-msg { max-width: 90%; }
+        .nb-chat-input-wrap { padding: 12px 12px 20px; }
       }
     `;
     document.head.appendChild(style);
 
+
     // 按钮
     const btn = document.createElement('button');
     btn.id = 'nb-chat-btn';
-    btn.innerHTML = '🤖<div class="nb-badge" id="nb-badge">1</div>';
+    btn.innerHTML = '<img src="logo-icon-light.jpg" class="nb-btn-logo" alt="AI客服"><div class="nb-badge" id="nb-badge">1</div>';
     btn.title = 'AI客服';
     document.body.appendChild(btn);
 
@@ -329,7 +381,7 @@
     win.id = 'nb-chat-window';
     win.innerHTML = `
       <div class="nb-chat-header">
-        <div class="nb-avatar">🐼</div>
+        <div class="nb-avatar"><img src="logo-icon-light.jpg" alt="奶爸小助手"></div>
         <div class="nb-info">
           <div class="nb-name">奶爸小助手</div>
           <div class="nb-status">● 在线 · 24小时服务</div>
@@ -337,6 +389,7 @@
         <button class="nb-close" id="nb-chat-close">✕</button>
       </div>
       <div class="nb-chat-messages" id="nb-chat-msgs"></div>
+      <div class="nb-chat-input-wrap">
       <div class="nb-quick-btns" id="nb-quick-btns">
         <button class="nb-quick-btn">🎤 演唱会票务</button>
         <button class="nb-quick-btn">🏥 医疗观光</button>
@@ -346,6 +399,7 @@
       <div class="nb-chat-input">
         <input type="text" id="nb-chat-input" placeholder="请输入您的问题..." maxlength="200" />
         <button id="nb-chat-send">➤</button>
+      </div>
       </div>
     `;
     document.body.appendChild(win);
@@ -369,12 +423,15 @@
     let currentLang = 'zh';
     let welcomed = false;
 
+    window.nbToggleChat = function() {
+      toggleChat();
+    };
     function toggleChat() {
       isOpen = !isOpen;
       win.classList.toggle('open', isOpen);
       btn.innerHTML = isOpen
-        ? '✕<div class="nb-badge" id="nb-badge" style="display:none">1</div>'
-        : '🤖<div class="nb-badge" id="nb-badge" style="display:none">1</div>';
+        ? '<span style="color:#fff;font-size:20px;line-height:1;">✕</span><div class="nb-badge" id="nb-badge" style="display:none">1</div>'
+        : '<img src="logo-icon-light.jpg" class="nb-btn-logo" alt="AI客服"><div class="nb-badge" id="nb-badge" style="display:none">1</div>';
       if (isOpen && !welcomed) {
         welcomed = true;
         setTimeout(() => addMsg('bot', CONFIG.welcomeMessages[currentLang]), 400);
@@ -386,7 +443,7 @@
       const div = document.createElement('div');
       div.className = `nb-msg ${role}`;
       if (role === 'bot') {
-        div.innerHTML = `<div class="nb-bot-icon">🐼</div><div class="nb-bubble">${text}</div>`;
+        div.innerHTML = `<div class="nb-bot-icon"><img src="logo-icon-light.jpg" alt="bot"></div><div class="nb-bubble">${text}</div>`;
       } else {
         div.innerHTML = `<div class="nb-bubble">${text}</div>`;
       }
@@ -398,7 +455,7 @@
       const div = document.createElement('div');
       div.className = 'nb-msg bot';
       div.id = 'nb-typing-indicator';
-      div.innerHTML = `<div class="nb-bot-icon">🐼</div><div class="nb-typing"><span></span><span></span><span></span></div>`;
+      div.innerHTML = `<div class="nb-bot-icon"><img src="logo-icon-light.jpg" alt="bot"></div><div class="nb-typing"><span></span><span></span><span></span></div>`;
       msgs.appendChild(div);
       msgs.scrollTop = msgs.scrollHeight;
     }
@@ -467,7 +524,7 @@
     setTimeout(() => {
       if (!isOpen) {
         badge.style.display = 'flex';
-        btn.innerHTML = '🤖<div class="nb-badge" id="nb-badge" style="display:flex">1</div>';
+        btn.innerHTML = '<img src="logo-icon-light.jpg" class="nb-btn-logo" alt="AI客服"><div class="nb-badge" id="nb-badge" style="display:flex">1</div>';
       }
     }, 3000);
   }
