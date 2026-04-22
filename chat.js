@@ -372,7 +372,7 @@
     // 按钮
     const btn = document.createElement('button');
     btn.id = 'nb-chat-btn';
-    btn.innerHTML = '<img src="logo-icon-light.jpg" class="nb-btn-logo" alt="AI客服"><div class="nb-badge" id="nb-badge">1</div>';
+    btn.innerHTML = '🤖<div class="nb-badge" id="nb-badge">1</div>';
     btn.title = 'AI客服';
     document.body.appendChild(btn);
 
@@ -431,7 +431,7 @@
       win.classList.toggle('open', isOpen);
       btn.innerHTML = isOpen
         ? '<span style="color:#fff;font-size:20px;line-height:1;">✕</span><div class="nb-badge" id="nb-badge" style="display:none">1</div>'
-        : '<img src="logo-icon-light.jpg" class="nb-btn-logo" alt="AI客服"><div class="nb-badge" id="nb-badge" style="display:none">1</div>';
+        : '🤖<div class="nb-badge" id="nb-badge" style="display:none">1</div>';
       if (isOpen && !welcomed) {
         welcomed = true;
         setTimeout(() => addMsg('bot', CONFIG.welcomeMessages[currentLang]), 400);
@@ -443,7 +443,7 @@
       const div = document.createElement('div');
       div.className = `nb-msg ${role}`;
       if (role === 'bot') {
-        div.innerHTML = `<div class="nb-bot-icon"><img src="logo-icon-light.jpg" alt="bot"></div><div class="nb-bubble">${text}</div>`;
+        div.innerHTML = `<div class="nb-bot-icon">🐼</div><div class="nb-bubble">${text}</div>`;
       } else {
         div.innerHTML = `<div class="nb-bubble">${text}</div>`;
       }
@@ -455,7 +455,7 @@
       const div = document.createElement('div');
       div.className = 'nb-msg bot';
       div.id = 'nb-typing-indicator';
-      div.innerHTML = `<div class="nb-bot-icon"><img src="logo-icon-light.jpg" alt="bot"></div><div class="nb-typing"><span></span><span></span><span></span></div>`;
+      div.innerHTML = `<div class="nb-bot-icon">🐼</div><div class="nb-typing"><span></span><span></span><span></span></div>`;
       msgs.appendChild(div);
       msgs.scrollTop = msgs.scrollHeight;
     }
@@ -524,7 +524,7 @@
     setTimeout(() => {
       if (!isOpen) {
         badge.style.display = 'flex';
-        btn.innerHTML = '<img src="logo-icon-light.jpg" class="nb-btn-logo" alt="AI客服"><div class="nb-badge" id="nb-badge" style="display:flex">1</div>';
+        btn.innerHTML = '🤖<div class="nb-badge" id="nb-badge" style="display:flex">1</div>';
       }
     }, 3000);
   }
